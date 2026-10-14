@@ -115,11 +115,12 @@ input{font:inherit;width:100%;padding:12px;border-radius:9px;border:1px solid #6
       const username = usernameInput.toLowerCase();
       const password = document.getElementById('pass').value;
       const accountEmails = {
-        arsham: 'arsham@thelegends.invalid',
-        brotex: 'brotex@thelegends.invalid'
+        arsham: 'akbarihassan90@gmail.com',
+        brotex: 'mxmminegame1392@gmail.com'
       };
-      const email = accountEmails[username];
-      if (!email) throw new Error('نام کاربری یا رمز عبور اشتباه است.');
+      // Accept the two member aliases or the real email address of an existing Supabase account.
+      const email = accountEmails[username] || (usernameInput.includes('@') ? usernameInput.trim() : null);
+      if (!email) throw new Error('نام کاربری معتبر نیست. از Arsham، BROTEX یا ایمیل حساب استفاده کن.');
       const { data, error } = await client.auth.signInWithPassword({ email, password });
       if (error) throw error;
       if (!data.user) throw new Error('ورود انجام نشد.');
