@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+<title id="title">The Legends emblem</title><desc id="desc">A gold crown above a dark hooded guardian silhouette inside a shield, with a lion-inspired crest.</desc>
+<defs>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0a6"/><stop offset=".38" stop-color="#d8b45a"/><stop offset="1" stop-color="#8f6423"/></linearGradient>
+ <radialGradient id="bg"><stop stop-color="#242016"/><stop offset="1" stop-color="#050505"/></radialGradient>
+ <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<circle cx="256" cy="256" r="238" fill="url(#bg)" stroke="url(#gold)" stroke-width="7"/>
+<circle cx="256" cy="256" r="218" fill="none" stroke="#d8b45a" stroke-opacity=".32" stroke-width="2"/>
+<path d="M256 76 286 111 326 91 320 139 360 151 332 184 350 215 320 222 320 316 256 383 192 316 192 222 162 215 180 184 152 151 192 139 186 91 226 111Z" fill="#0a0907" stroke="url(#gold)" stroke-width="5" stroke-linejoin="round"/>
+<path d="M177 126 193 76 235 105 256 60 277 105 319 76 335 126 290 143 256 131 222 143Z" fill="url(#gold)" stroke="#fff0ad" stroke-width="3" stroke-linejoin="round" filter="url(#glow)"/>
+<path d="M196 230 Q205 174 256 166 Q307 174 316 230 L302 290 256 327 210 290Z" fill="#15130f" stroke="url(#gold)" stroke-width="4"/>
+<path d="M210 225 Q256 185 302 225 L288 265 256 286 224 265Z" fill="#030303" stroke="#8f6b2d" stroke-width="3"/>
+<path d="M225 239 246 232 256 247 266 232 287 239 276 255 256 267 236 255Z" fill="url(#gold)"/>
+<path d="M224 278 256 294 288 278 279 306 256 323 233 306Z" fill="#080807" stroke="url(#gold)" stroke-width="3"/>
+<path d="M157 310 Q190 333 207 356 L256 392 305 356 Q322 333 355 310 L340 366 256 432 172 366Z" fill="#090807" stroke="url(#gold)" stroke-width="4" stroke-linejoin="round"/>
+<path d="M206 354 229 366 256 371 283 366 306 354 291 390 256 411 221 390Z" fill="url(#gold)" opacity=".9"/>
+<text x="256" y="466" fill="url(#gold)" font-family="Georgia,serif" font-size="26" font-weight="bold" letter-spacing="4" text-anchor="middle">THE LEGENDS</text>
+</svg>
