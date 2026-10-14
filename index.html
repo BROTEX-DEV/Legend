@@ -86,7 +86,7 @@ input{font:inherit;width:100%;padding:12px;border-radius:9px;border:1px solid #6
       await client.auth.signOut();
       throw new Error('این حساب در فهرست اعضای مجاز نیست. با مدیر سایت تماس بگیر.');
     }
-    showPrivate(data.display_name || (user.email === 'arsham@thelegends.invalid' ? 'Arsham' : 'BROTEX'), data.role);
+    showPrivate(data.display_name || user.email?.split('@')[0] || 'عضو The Legends', data.role);
   }
 
   try {
