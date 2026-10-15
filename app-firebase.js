@@ -8,7 +8,7 @@
 
   const aliases = {
     ASTRO: { email: "astro@legends.example.com", displayName: "ASTRO" },
-    BROTEX: { email: "brotex@legends.invalid", displayName: "BROTEX" }
+    BROTEX: { email: "brotex@legends.example.com", displayName: "BROTEX" }
   };
   const words = {
     en: { "Overview":"Overview", "Terminal":"Terminal", "Black Files":"Black Files", "System Log":"System Log", "Mission Control":"Mission Control", "Cyber Terminal":"Cyber Terminal", "Sign out":"Sign out", "AUTHENTICATE":"AUTHENTICATE", "PASSWORD":"PASSWORD", "USERNAME":"USERNAME", "Enter member password":"Enter member password", "Choose member":"Choose member", "Operative Login":"Operative Login", "IDENTITY VERIFICATION":"IDENTITY VERIFICATION", "Two authorized members. One private workspace.":"Two authorized members. One private workspace.", "SYSTEM STANDBY":"SYSTEM STANDBY" },
