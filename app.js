@@ -1,6 +1,6 @@
-/* LEGENDS v1.0.0. Use publishable/anon key only; never service_role. */
-const SUPABASE_URL="https://YOUR-PROJECT-REF.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY="YOUR_SUPABASE_PUBLISHABLE_KEY";
+/* LEGENDS v1.0.1. Connected to the active NEVAR Supabase project. Use publishable key only; never service_role. */
+const SUPABASE_URL="https://pwwicgyrycaexjnnhseb.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY="sb_publishable_CiQbGJJx_WGbeGTPssoWYQ_kutyUJh9";
 const PASSWORD_LOGIN_FUNCTION="password-only-login";
 const $=s=>document.querySelector(s);let db=null,user=null,cases=[],events=[];
 const loginView=$("#login-view"),appView=$("#app-view"),loginForm=$("#login-form"),loginMessage=$("#login-message"),status=$("#connection-status"),out=$("#terminal-output");
