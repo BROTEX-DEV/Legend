@@ -1,4 +1,4 @@
-/* LEGENDS v1.0.2. Connected to the active NEVAR Supabase project. Use publishable key only; never service_role. */
+/* LEGENDS v1.1.0. Connected to the active NEVAR Supabase project. Use publishable key only; never service_role. */
 const SUPABASE_URL="https://pwwicgyrycaexjnnhseb.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY="sb_publishable_CiQbGJJx_WGbeGTPssoWYQ_kutyUJh9";
 const PASSWORD_LOGIN_FUNCTION="password-only-login";
