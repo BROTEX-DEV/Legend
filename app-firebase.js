@@ -7,7 +7,7 @@
   let auth = null, store = null, currentUser = null, cases = [], language = localStorage.getItem("legends-language") === "fa" ? "fa" : "en";
 
   const aliases = {
-    ASTRO: { email: "astro@legends.invalid", displayName: "ASTRO" },
+    ASTRO: { email: "astro@legends.example.com", displayName: "ASTRO" },
     BROTEX: { email: "brotex@legends.invalid", displayName: "BROTEX" }
   };
   const words = {
