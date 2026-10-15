@@ -26,7 +26,7 @@ function applyLanguage(){
  document.documentElement.lang=language;document.documentElement.dir=language==="fa"?"rtl":"ltr";
  document.body.classList.toggle("persian",language==="fa");
  const btn=$("#language-toggle");if(btn)btn.textContent=language==="fa"?"English":"فارسی";
- const dict=translations[language];
+ const dict=language==="fa"?translations.fa:{};
  const walk=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
  const nodes=[];while(walk.nextNode())nodes.push(walk.currentNode);
  for(const n of nodes){const raw=n.nodeValue,trim=raw.trim();if(!trim)continue;const original=n.__legendsOriginal||(n.__legendsOriginal=trim);const translated=dict[original];if(translated)n.nodeValue=raw.replace(trim,translated);else if(language==="en"&&translations.fa[original])n.nodeValue=raw.replace(trim,original);}
