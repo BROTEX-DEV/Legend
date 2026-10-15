@@ -14,7 +14,7 @@ Firebase Authentication and Cloud Firestore have no-cost usage quotas on the Spa
 
 ## 2. Provision the two accounts
 The website keeps the password-only *screen*, mapping aliases to internal Firebase Auth email identities:
-- ASTRO → `astro@legends.invalid`
+- ASTRO → `astro@legends.example.com`
 - BROTEX → `brotex@legends.invalid`
 
 Create those two accounts in Firebase Authentication using strong passwords. Do not put passwords in GitHub or in frontend JavaScript. The aliases are not a substitute for strong passwords.
