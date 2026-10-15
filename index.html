@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080c0a">
-  <meta name="description" content="BLACKSITE private two-member cyber terminal">
-  <title>BLACKSITE // Cyber Division</title>
+  <meta name="description" content="LEGENDS private two-member cyber workspace">
+  <title>LEGENDS</title>
   <link rel="stylesheet" href="./style.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script defer src="./app.js"></script>
@@ -14,7 +14,8 @@
   <div class="scanlines" aria-hidden="true"></div>
   <main class="shell">
     <header class="topbar">
-      <a class="brand" href="#" aria-label="BLACKSITE home"><span class="brand-mark">▰</span> BLACKSITE<span class="brand-slash"> //</span></a>
+      <a class="brand" href="#" aria-label="LEGENDS home"><span class="brand-mark">▰</span> LEGENDS<span class="brand-slash"> //</span></a>
+      <button id="language-toggle" class="language-toggle" type="button" aria-label="Switch language">فارسی</button>
       <div class="top-meta"><span class="status-dot"></span><span id="connection-status">SYSTEM STANDBY</span><span class="divider">|</span><span>CYBER DIVISION</span></div>
     </header>
 
@@ -22,7 +23,7 @@
       <div class="hero-copy">
         <p class="eyebrow">PRIVATE NETWORK / ACCESS GATE 01</p>
         <h1>ENTER THE<br><span>MAINFRAME.</span></h1>
-        <p class="muted">Two authorized operatives. One private workspace.</p>
+        <p class="muted">Two authorized members. One private workspace.</p>
         <div class="terminal-mini" aria-label="System messages">
           <p><span class="green">[SYS]</span> Initializing secure workspace...</p>
           <p><span class="green">[SYS]</span> Public registration disabled.</p>
@@ -31,13 +32,11 @@
       </div>
       <form id="login-form" class="panel login-panel">
         <div class="panel-heading"><span class="square-icon">⌁</span><div><p class="eyebrow">IDENTITY VERIFICATION</p><h2>Operative Login</h2></div></div>
-        <label for="email">OPERATIVE EMAIL</label>
-        <input id="email" name="email" type="email" autocomplete="username" placeholder="operative@blacksite.local" required>
-        <label for="password">ACCESS PHRASE</label>
-        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••••••" required>
+        <label for="password" id="password-label">PASSWORD</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
         <button class="primary-button" type="submit"><span>AUTHENTICATE</span><span aria-hidden="true">↗</span></button>
         <p id="login-message" class="form-message" role="status"></p>
-        <p class="tiny-note">Authorized accounts only. New registrations are not available here.</p>
+        <p class="tiny-note">Password-only sign-in is available to authorized members.</p>
       </form>
     </section>
 
@@ -56,7 +55,7 @@
 
       <div class="workspace">
         <div class="welcome-row">
-          <div><p class="eyebrow">BLACKSITE / INTERNAL NETWORK</p><h1 id="page-title">Mission Control<span class="green">.</span></h1></div>
+          <div><p class="eyebrow">LEGENDS / INTERNAL NETWORK</p><h1 id="page-title">Mission Control<span class="green">.</span></h1></div>
           <div class="session-pill"><span class="status-dot"></span> SESSION ACTIVE</div>
         </div>
 
@@ -79,11 +78,11 @@
 
         <section id="page-terminal" class="page hidden">
           <article class="panel terminal-full">
-            <div class="panel-title"><div><span class="green">●</span> BLACKSITE SHELL <span class="muted">/ browser workspace</span></div><button id="clear-terminal" class="text-button">CLEAR</button></div>
+            <div class="panel-title"><div><span class="green">●</span> LEGENDS SHELL <span class="muted">/ browser workspace</span></div><button id="clear-terminal" class="text-button">CLEAR</button></div>
             <div id="terminal-output" class="output terminal-output" aria-live="polite">
-              <p>BLACKSITE SHELL v1.0</p><p>Private workspace initialized.</p><p>Type <code>help</code> to list available commands.</p>
+              <p>LEGENDS SHELL v1.0</p><p>Private workspace initialized.</p><p>Type <code>help</code> to list available commands.</p>
             </div>
-            <form id="command-form" class="command-line"><label for="command-input">AGENT@BLACKSITE:~$</label><input id="command-input" autocomplete="off" spellcheck="false" aria-label="Terminal command" placeholder="type a command..."><button type="submit" aria-label="Run command">↵</button></form>
+            <form id="command-form" class="command-line"><label for="command-input">AGENT@LEGENDS:~$</label><input id="command-input" autocomplete="off" spellcheck="false" aria-label="Terminal command" placeholder="type a command..."><button type="submit" aria-label="Run command">↵</button></form>
             <p class="tiny-note">This is a safe in-browser command simulator. It cannot execute operating-system or server commands.</p>
           </article>
         </section>
@@ -101,7 +100,7 @@
           </article>
         </section>
 
-        <footer class="footer"><span>BLACKSITE <span class="muted">v1.0.0</span></span><span>AUTHORIZED ACCESS ONLY // FICTIONAL CYBER WORKSPACE</span></footer>
+        <footer class="footer"><span>LEGENDS <span class="muted">v1.0.0</span></span><span>AUTHORIZED ACCESS ONLY // FICTIONAL CYBER WORKSPACE</span></footer>
       </div>
     </section>
   </main>
