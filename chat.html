@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080c0a">
+  <meta name="description" content="LEGENDS private chat">
+  <title>LEGENDS // CHAT</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./chat.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="./chat.js"></script>
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <main class="shell chat-shell">
+    <header class="topbar">
+      <a class="brand" href="./index.html" aria-label="LEGENDS"><span class="brand-mark">▰</span> LEGENDS<span class="brand-slash"> //</span></a>
+      <div class="top-meta"><span class="status-dot"></span><span id="chat-status">در حال بررسی نشست</span><span class="divider">|</span><span>PRIVATE NETWORK</span></div>
+    </header>
+    <section id="chat-state" class="chat-state panel">
+      <span class="status-dot"></span>
+      <h1 id="state-title">در حال اتصال به چت امن...</h1>
+      <p id="state-text" class="muted">نشست ورود و دسترسی اعضا بررسی می‌شود.</p>
+      <a id="return-login" class="quiet-button hidden" href="./index.html">بازگشت به ورود</a>
+    </section>
+    <section id="chat-app" class="chat-app hidden">
+      <aside class="chat-sidebar panel">
+        <p class="eyebrow">LEGENDS / NETWORK</p>
+        <h2>گفتگوها<span class="green">.</span></h2>
+        <div id="conversation-list" class="conversation-list"></div>
+        <div class="chat-side-bottom">
+          <div class="member-chip"><span id="member-avatar" class="avatar">L</span><div><strong id="member-name">MEMBER</strong><small>عضو مجاز</small></div></div>
+          <button id="chat-logout" class="quiet-button" type="button">↪ خروج از حساب</button>
+        </div>
+      </aside>
+      <section class="chat-main panel">
+        <header class="chat-heading">
+          <div class="chat-room-symbol">#</div>
+          <div><h1 id="conversation-title">گفتگوی خصوصی</h1><p><span class="online-dot"></span> فقط اعضای مجاز LEGENDS</p></div>
+          <span class="chat-encryption">PRIVATE</span>
+        </header>
+        <div id="messages" class="messages" role="log" aria-live="polite" aria-label="پیام‌ها">
+          <div class="empty-state">در حال بارگذاری پیام‌ها...</div>
+        </div>
+        <p id="chat-error" class="chat-error" role="status"></p>
+        <form id="message-form" class="message-composer">
+          <label class="sr-only" for="message-input">پیام</label>
+          <input id="message-input" maxlength="4000" autocomplete="off" placeholder="پیامت را بنویس..." required>
+          <button id="send-message" class="send-button" type="submit" aria-label="ارسال پیام"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20 4l-5 16-3-6-8-2Zm8 2 8-10" /></svg></button>
+        </form>
+        <footer class="chat-footer"><span>پیام‌ها در Supabase ذخیره و همگام‌سازی می‌شوند.</span><span>LEGENDS <b>v1.1.0</b></span></footer>
+      </section>
+    </section>
+  </main>
+  <footer class="site-version-footer"><span>SITE VERSION</span><strong>v1.1.0</strong></footer>
+</body>
+</html>
