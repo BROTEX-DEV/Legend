@@ -7,8 +7,11 @@
   <meta name="description" content="LEGENDS private two-member cyber workspace">
   <title>LEGENDS</title>
   <link rel="stylesheet" href="./style.css">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script defer src="./app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script defer src="./firebase-config.js"></script>
+  <script defer src="./app-firebase.js"></script>
 </head>
 <body>
   <div class="scanlines" aria-hidden="true"></div>
@@ -32,6 +35,8 @@
       </div>
       <form id="login-form" class="panel login-panel">
         <div class="panel-heading"><span class="square-icon">⌁</span><div><p class="eyebrow">IDENTITY VERIFICATION</p><h2>Operative Login</h2></div></div>
+        <label for="username" id="username-label">USERNAME</label>
+        <input id="username" name="username" type="text" autocomplete="username" placeholder="ASTRO or BROTEX" required>
         <label for="password" id="password-label">PASSWORD</label>
         <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter member password" required>
         <button class="primary-button" type="submit"><span>AUTHENTICATE</span><span aria-hidden="true">↗</span></button>
@@ -104,6 +109,6 @@
       </div>
     </section>
   </main>
-  <footer class="site-version-footer"><span>SITE VERSION</span><strong>v1.0.3</strong></footer>
+  <footer class="site-version-footer"><span>SITE VERSION</span><strong>v1.1.0</strong></footer>
 </body>
 </html>
