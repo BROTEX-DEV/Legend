@@ -33,9 +33,19 @@ button:focus-visible{outline:2px solid white;outline-offset:3px}
 footer{text-align:center;padding:14px;color:#8d7c80;font-size:.78rem;border-top:1px solid #ffffff12;background:#0003}
 @media(max-width:520px){header{padding:12px 4%}main{margin:26px auto}.grid{grid-template-columns:1fr}.card{box-shadow:0 2px 0 #7b2937,0 6px 0 #310f16,0 13px 22px #0008,inset 0 1px 0 #ffffff1c}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+
+.math-rain{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;opacity:.62}
+.math-rain span{position:absolute;top:-12vh;color:#ff334d;font-family:Arial,sans-serif;font-weight:700;font-size:clamp(18px,2.8vw,30px);text-shadow:0 0 8px #f0274266,0 0 18px #f0274233;animation:mathFall linear infinite;will-change:transform}
+.math-rain span:nth-child(3n){color:#f5f5f5;opacity:.72}
+.math-rain span:nth-child(4n){color:#ff697b;font-size:clamp(14px,2vw,22px)}
+@keyframes mathFall{0%{transform:translate3d(0,-12vh,0) rotate(0deg);opacity:0}10%{opacity:.8}85%{opacity:.7}100%{transform:translate3d(28px,115vh,0) rotate(180deg);opacity:0}}
+header,main,footer{position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){.math-rain span{animation:none;display:none}}
+
 </style>
 </head>
 <body>
+<div class="math-rain" id="math-rain" aria-hidden="true"></div>
 <header><div class="brand"><img class="brand-icon" src="InShot_20261027_193444553.jpg" alt="لوگوی انضباط من"><span>انضباط من</span></div></header>
 <main>
 <section class="hero"><div class="eyebrow">داشبورد دانش‌آموزی</div><h1>آمار انضباطی من</h1></section>
@@ -51,8 +61,23 @@ footer{text-align:center;padding:14px;color:#8d7c80;font-size:.78rem;border-top:
 </div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.2.5</footer>
+<footer>انضباط من · نسخه 1.2.6</footer>
 <script>
+
+const rain=document.getElementById('math-rain');
+if(rain){
+ const symbols=['+','−','+','−','÷','×'];
+ for(let i=0;i<34;i++){
+  const mark=document.createElement('span');
+  mark.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  mark.style.left=(Math.random()*100)+'%';
+  mark.style.animationDuration=(9+Math.random()*13)+'s';
+  mark.style.animationDelay=(-Math.random()*20)+'s';
+  mark.style.opacity=(.25+Math.random()*.6).toFixed(2);
+  rain.appendChild(mark);
+ }
+}
+
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
 const loginCard=document.querySelector('.card');
 const accounts={
