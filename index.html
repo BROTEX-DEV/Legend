@@ -8,44 +8,32 @@
 <style>
 @font-face{font-family:DoranBold;src:url('1.ttf') format('truetype');font-weight:700;font-display:swap}
 @font-face{font-family:DoranLight;src:url('2.ttf') format('truetype');font-weight:400;font-display:swap}
-:root{color-scheme:dark;--bg:#090909;--panel:#191214;--red:#f02742;--text:#faf7f7;--muted:#b7a9ac;--line:#51202a}
+:root{color-scheme:dark;--bg:#101010;--panel:#171717;--text:#f4f4f4;--muted:#a3a3a3;--line:#303030;--accent:#e5e5e5}
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -15%,#471018 0,transparent 45%),linear-gradient(145deg,#090909,#150b0d 55%,#080808);color:var(--text);font-family:DoranLight,Tahoma,sans-serif;display:flex;flex-direction:column}
+body{margin:0;min-height:100vh;background:#101010;color:var(--text);font-family:DoranLight,Tahoma,sans-serif;display:flex;flex-direction:column}
 h1,h2,h3,.brand,.badge,button,.stat-value{font-family:DoranBold,Tahoma,sans-serif}
-header{padding:14px 5%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12;gap:12px;background:linear-gradient(180deg,#ffffff07,transparent);box-shadow:0 6px 22px #0006}
-.brand{display:flex;align-items:center;gap:9px;font-size:.94rem;text-shadow:0 2px 12px #f0274255}.brand-icon{width:32px;height:32px;border-radius:10px;display:block;object-fit:cover;box-shadow:0 5px 0 #4b111b,0 9px 20px #f0274240;border:1px solid #ff6476}
-main{width:min(680px,92%);margin:32px auto;flex:1;perspective:1000px}
-.hero{text-align:center;margin-bottom:20px}.eyebrow{color:#ff6578;font-size:.76rem;text-shadow:0 0 15px #f0274277}.hero h1{font-size:clamp(1.5rem,4vw,2rem);margin:8px 0 0;text-shadow:0 3px 0 #57101c,0 8px 22px #f0274235;letter-spacing:.2px}
-.card{position:relative;overflow:hidden;background:linear-gradient(145deg,#2b1a1e 0%,#191114 48%,#100b0c 100%);border:1px solid #71303b;border-radius:16px;padding:clamp(16px,3vw,23px);max-width:440px;margin:auto;box-shadow:0 2px 0 #7b2937,0 8px 0 #310f16,0 17px 28px #0009,inset 0 1px 0 #ffffff1c;transform:translateY(-2px)}
-.card:before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,#ff6b7d,transparent);opacity:.8}
-.card h2{font-size:1rem;margin:0 0 7px;text-shadow:0 2px 8px #0008}
+header{padding:14px 5%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:12px;background:#101010}
+.brand{display:flex;align-items:center;gap:10px;font-size:.94rem}.brand-icon{width:32px;height:32px;border-radius:8px;display:block;object-fit:cover;border:1px solid #3a3a3a}
+main{width:min(680px,92%);margin:32px auto;flex:1}
+.hero{text-align:center;margin-bottom:22px}.eyebrow{color:var(--muted);font-size:.78rem}.hero h1{font-size:clamp(1.5rem,4vw,2rem);margin:8px 0 0;letter-spacing:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:clamp(16px,3vw,23px);max-width:440px;margin:auto}
+.card h2{font-size:1rem;margin:0 0 12px}
 label{display:block;margin-bottom:7px;font-size:.84rem}
-input{width:100%;background:linear-gradient(180deg,#090909,#171012);color:white;border:1px solid #60303a;border-radius:9px;padding:11px;font:.92rem DoranLight,Tahoma,sans-serif;outline:none;direction:ltr;text-align:right;box-shadow:inset 0 3px 7px #0009,0 1px 0 #ffffff0a;transition:border-color .2s,box-shadow .2s}
-input:focus{border-color:#ff6476;box-shadow:inset 0 3px 7px #0009,0 0 0 3px #f0274220,0 0 16px #f0274220}
-button{border:1px solid #ff6578;border-radius:9px;padding:11px 15px;font-size:.88rem;cursor:pointer;width:100%;margin-top:10px;background:linear-gradient(180deg,#ff4058 0%,#d71935 60%,#a80f27 100%);color:white;box-shadow:0 3px 0 #6e0b1b,0 8px 15px #f0274230,inset 0 1px 0 #ffffff55;text-shadow:0 1px 2px #71091a;transition:transform .15s,box-shadow .15s,filter .15s}
-button:hover{filter:brightness(1.08);transform:translateY(-1px);box-shadow:0 4px 0 #6e0b1b,0 10px 18px #f0274238,inset 0 1px 0 #ffffff55}
-button:active{transform:translateY(2px);box-shadow:0 1px 0 #6e0b1b,0 3px 8px #f0274220}
-button:focus-visible{outline:2px solid white;outline-offset:3px}
-.notice{display:none;margin-top:12px;border:1px solid #71303b;background:linear-gradient(145deg,#32151b,#1b1013);color:#f4cbd1;border-radius:9px;padding:10px;line-height:1.7;font-size:.82rem;box-shadow:0 4px 12px #0005,inset 0 1px 0 #ffffff0b}.notice.show{display:block}
-.stats{display:none;margin:24px auto 0;max-width:680px}.stats.show{display:block}.stats h2{text-align:center;font-size:1.05rem;margin-bottom:13px;text-shadow:0 3px 12px #f0274233}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.stat{position:relative;background:linear-gradient(145deg,#28181c,#171012);border:1px solid #4b252d;border-radius:13px;padding:14px;box-shadow:0 2px 0 #32121a,0 7px 14px #0007,inset 0 1px 0 #ffffff0c;transition:transform .18s,box-shadow .18s}.stat:hover{transform:translateY(-3px);box-shadow:0 4px 0 #32121a,0 12px 20px #0008,inset 0 1px 0 #ffffff10}
-.stat h3{font-size:.88rem;margin:0 0 8px;color:#ffccd2}.stat-value{font-size:.92rem}.stat p{color:var(--muted);font-size:.76rem;line-height:1.7;margin:6px 0 0}
-footer{text-align:center;padding:14px;color:#8d7c80;font-size:.78rem;border-top:1px solid #ffffff12;background:#0003}
-@media(max-width:520px){header{padding:12px 4%}main{margin:26px auto}.grid{grid-template-columns:1fr}.card{box-shadow:0 2px 0 #7b2937,0 6px 0 #310f16,0 13px 22px #0008,inset 0 1px 0 #ffffff1c}}
+input{width:100%;background:#101010;color:var(--text);border:1px solid #3a3a3a;border-radius:8px;padding:12px;font:.92rem DoranLight,Tahoma,sans-serif;outline:none;direction:ltr;text-align:right;transition:border-color .15s}
+input:focus{border-color:#aaa}
+button{border:1px solid #e5e5e5;border-radius:8px;padding:11px 15px;font-size:.88rem;cursor:pointer;width:100%;margin-top:10px;background:#e5e5e5;color:#111;transition:background .15s}
+button:hover{background:#fff}button:active{background:#ccc}
+button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.notice{display:none;margin-top:12px;border:1px solid #414141;background:#202020;color:#eee;border-radius:8px;padding:10px;line-height:1.7;font-size:.82rem}.notice.show{display:block}
+.stats{display:none;margin:24px auto 0;max-width:680px}.stats.show{display:block}.stats h2{text-align:center;font-size:1.05rem;margin-bottom:13px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.stat h3{font-size:.88rem;margin:0 0 8px;color:#eee}.stat-value{font-size:.92rem}.stat p{color:var(--muted);font-size:.76rem;line-height:1.7;margin:6px 0 0}
+footer{text-align:center;padding:14px;color:#888;font-size:.78rem;border-top:1px solid var(--line)}
+@media(max-width:520px){header{padding:12px 4%}main{margin:26px auto}.grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
-
-.math-rain{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;opacity:.62}
-.math-rain span{position:absolute;top:-12vh;color:#ff334d;font-family:Arial,sans-serif;font-weight:700;font-size:clamp(18px,2.8vw,30px);text-shadow:0 0 8px #f0274266,0 0 18px #f0274233;animation:mathFall linear infinite;will-change:transform}
-.math-rain span:nth-child(3n){color:#f5f5f5;opacity:.72}
-.math-rain span:nth-child(4n){color:#ff697b;font-size:clamp(14px,2vw,22px)}
-@keyframes mathFall{0%{transform:translate3d(0,-12vh,0) rotate(0deg);opacity:0}10%{opacity:.8}85%{opacity:.7}100%{transform:translate3d(28px,115vh,0) rotate(180deg);opacity:0}}
-header,main,footer{position:relative;z-index:1}
-@media(prefers-reduced-motion:reduce){.math-rain span{animation:none;display:none}}
-
 </style>
 </head>
 <body>
-<div class="math-rain" id="math-rain" aria-hidden="true"></div>
 <header><div class="brand"><img class="brand-icon" src="InShot_20261027_193444553.jpg" alt="لوگوی انضباط من"><span>انضباط من</span></div></header>
 <main>
 <section class="hero"><div class="eyebrow">داشبورد دانش‌آموزی</div><h1>آمار انضباطی من</h1></section>
@@ -61,22 +49,8 @@ header,main,footer{position:relative;z-index:1}
 </div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.2.7</footer>
+<footer>انضباط من · نسخه 1.2.8</footer>
 <script>
-
-const rain=document.getElementById('math-rain');
-if(rain){
- const symbols=['卐'];
- for(let i=0;i<60;i++){
-  const mark=document.createElement('span');
-  mark.textContent=symbols[Math.floor(Math.random()*symbols.length)];
-  mark.style.left=(Math.random()*100)+'%';
-  mark.style.animationDuration=(9+Math.random()*13)+'s';
-  mark.style.animationDelay=(-Math.random()*20)+'s';
-  mark.style.opacity=(.25+Math.random()*.6).toFixed(2);
-  rain.appendChild(mark);
- }
-}
 
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
 const loginCard=document.querySelector('.card');
