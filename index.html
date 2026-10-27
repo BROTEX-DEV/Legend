@@ -49,7 +49,7 @@ footer{text-align:center;padding:14px;color:#777;font-size:.78rem;border-top:1px
 </div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.1.7</footer>
+<footer>انضباط من · نسخه 1.1.8</footer>
 <script>
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title'),accountMessage=document.getElementById('account-message');
 const loginCard=document.querySelector('.card');
@@ -71,7 +71,7 @@ form.addEventListener('submit',function(event){
   notice.textContent='';
   notice.classList.remove('show');
   statsTitle.textContent='خلاصه آمار · '+account.name;
-  accountMessage.textContent=account.role==='مدیر'?'با دسترسی مدیر وارد شدی. بخش مدیریت و ثبت آمار هنوز به سامانه متصل نشده است.':'خوش آمدی '+account.name+'! آمار اختصاصی شما پس از اتصال پایگاه داده نمایش داده می‌شود.';
+  accountMessage.textContent=account.role==='مدیر'?'با دسترسی مدیر وارد شدی. بخش مدیریت و ثبت آمار هنوز آماده نشده است.':'خوش آمدی '+account.name+'! هنوز آماری برای نمایش ثبت نشده است.';
   accountMessage.style.display='block';
   stats.classList.add('show');
   loginCard.style.display='none';
