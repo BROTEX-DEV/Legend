@@ -33,12 +33,13 @@ label{display:block;margin-bottom:10px;font-size:.9rem}input{width:100%;backgrou
 </div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.1.3</footer>
+<footer>انضباط من · نسخه 1.1.4</footer>
 <script>
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title'),accountMessage=document.getElementById('account-message');
+const loginCard=document.querySelector('.card');
 const accounts={
   'sahand1392':{name:'سهند',role:'دانش‌آموز'},
-  'astro1525':{name:'کاربر دوم',role:'دانش‌آموز'},
+  'astro1525':{name:'آرشام',role:'دانش‌آموز'},
   'admin1234':{name:'مدیر سامانه',role:'مدیر'}
 };
 form.addEventListener('submit',function(event){
@@ -57,6 +58,7 @@ form.addEventListener('submit',function(event){
   accountMessage.textContent=account.role==='مدیر'?'با دسترسی مدیر وارد شدی. بخش مدیریت و ثبت آمار هنوز به سامانه متصل نشده است.':'خوش آمدی '+account.name+'! آمار اختصاصی شما پس از اتصال پایگاه داده نمایش داده می‌شود.';
   accountMessage.style.display='block';
   stats.classList.add('show');
+  loginCard.style.display='none';
   input.value='';
 });
 </script>
