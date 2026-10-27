@@ -41,7 +41,7 @@ footer{text-align:center;padding:14px;color:#777;font-size:.78rem;border-top:1px
 <form id="lookup-form" novalidate><label for="national-code">کد اختصاصی ورود</label><input id="national-code" name="national-code" type="password" inputmode="text" autocomplete="off" maxlength="10" aria-label="کد اختصاصی" placeholder="کد اختصاصی خود را وارد کن" required><button type="submit">مشاهده آمار من ←</button></form>
 <div class="notice" id="notice" role="status" aria-live="polite"></div>
 </section>
-<section class="stats" id="stats" aria-live="polite"><h2 id="stats-title">خلاصه آمار شما</h2><div id="account-message" class="notice show" style="display:none"></div><div class="grid">
+<section class="stats" id="stats" aria-live="polite"><h2 id="stats-title">خلاصه آمار شما</h2><div class="grid">
 <article class="stat"><h3>تأخیرها</h3><div class="stat-value">هنوز ثبت نشده</div><p>تعداد دفعات تأخیر در ورود به مدرسه</p></article>
 <article class="stat"><h3>غیبت‌ها</h3><div class="stat-value">هنوز ثبت نشده</div><p>تعداد غیبت‌های ثبت‌شده</p></article>
 <article class="stat"><h3>نمره انضباط</h3><div class="stat-value">هنوز ثبت نشده</div><p>نمره اعلام‌شده توسط مدرسه</p></article>
@@ -49,9 +49,9 @@ footer{text-align:center;padding:14px;color:#777;font-size:.78rem;border-top:1px
 </div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.1.8</footer>
+<footer>انضباط من · نسخه 1.1.9</footer>
 <script>
-const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title'),accountMessage=document.getElementById('account-message');
+const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
 const loginCard=document.querySelector('.card');
 const accounts={
   'sahand1392':{name:'سهند',role:'دانش‌آموز'},
@@ -71,8 +71,6 @@ form.addEventListener('submit',function(event){
   notice.textContent='';
   notice.classList.remove('show');
   statsTitle.textContent='خلاصه آمار · '+account.name;
-  accountMessage.textContent=account.role==='مدیر'?'با دسترسی مدیر وارد شدی. بخش مدیریت و ثبت آمار هنوز آماده نشده است.':'خوش آمدی '+account.name+'! هنوز آماری برای نمایش ثبت نشده است.';
-  accountMessage.style.display='block';
   stats.classList.add('show');
   loginCard.style.display='none';
   input.value='';
