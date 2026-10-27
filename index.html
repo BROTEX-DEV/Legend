@@ -20,9 +20,9 @@ label{display:block;margin-bottom:10px;font-size:.9rem}input{width:100%;backgrou
 <body>
 <header><div class="brand"><span class="brand-icon" aria-hidden="true">✦</span><span>انضباط من</span></div><span class="badge">سامانه مشاهده آمار</span></header>
 <main>
-<section class="hero"><div class="eyebrow">داشبورد دانش‌آموزی</div><h1>آمار انضباطی من</h1><p>برای مشاهده بخش آمار، کد ملی آزمایشی را وارد کن. آمار واقعی تا زمان اتصال امن اطلاعات مدرسه نمایش داده نمی‌شود.</p></section>
-<section class="card" aria-labelledby="form-title"><h2 id="form-title">مشاهده آمار من</h2><p class="hint">این نسخه نمایشی است؛ هنوز اطلاعات واقعی دانش‌آموزان به سامانه متصل نشده است.</p>
-<form id="lookup-form" novalidate><label for="national-code">کد ملی</label><input id="national-code" name="national-code" type="password" inputmode="numeric" autocomplete="off" maxlength="10" pattern="[0-9۰-۹]{10}" placeholder="۱۰ رقم کد ملی" aria-describedby="privacy-note" required><button type="submit">مشاهده آمار من ←</button></form>
+<section class="hero"><div class="eyebrow">داشبورد دانش‌آموزی</div><h1>آمار انضباطی من</h1></section>
+<section class="card" aria-labelledby="form-title"><h2 id="form-title">مشاهده آمار من</h2>
+<form id="lookup-form" novalidate><label for="national-code">کد ملی</label><input id="national-code" name="national-code" type="password" inputmode="numeric" autocomplete="off" maxlength="10" pattern="[0-9۰-۹]{10}" placeholder="۱۰ رقم کد ملی" required><button type="submit">مشاهده آمار من ←</button></form>
 <div class="notice" id="notice" role="status" aria-live="polite"></div>
 </section>
 <section class="stats" id="stats" aria-live="polite"><h2>خلاصه آمار شما</h2><div class="grid">
@@ -31,12 +31,12 @@ label{display:block;margin-bottom:10px;font-size:.9rem}input{width:100%;backgrou
 <article class="stat"><h3>نمره انضباط</h3><div class="stat-value">هنوز ثبت نشده</div><p>نمره اعلام‌شده توسط مدرسه</p></article>
 <article class="stat"><h3>توضیحات مدرسه</h3><div class="stat-value">هنوز ثبت نشده</div><p>یادداشت‌ها و توضیحات مربوط به وضعیت انضباطی</p></article>
 </div></section>
-<p class="privacy" id="privacy-note">حریم خصوصی: کد ملی در این نسخه ذخیره یا به سرور ارسال نمی‌شود. کد ملی واقعی را در یک مخزن عمومی گیت‌هاب قرار نده؛ برای داده‌های واقعی باید احراز هویت و پایگاه داده امن راه‌اندازی شود. فونت‌ها از فایل‌های 1.ttf و 2.ttf بارگذاری می‌شوند و باید این دو فایل در کنار index.html قرار داشته باشند.</p>
+
 </main>
-<footer>انضباط من · نسخه 1.1.0</footer>
+<footer>انضباط من · نسخه 1.1.1</footer>
 <script>
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats');
-form.addEventListener('submit',function(event){event.preventDefault();const digits=input.value.replace(/[۰-۹]/g,ch=>String(ch.charCodeAt(0)-1776));if(!/^\d{10}$/.test(digits)){notice.textContent='لطفاً یک کد ملی ۱۰ رقمی وارد کن.';notice.classList.add('show');stats.classList.remove('show');return;}notice.textContent='ورود آزمایشی انجام شد؛ این بخش‌ها فعلاً فقط جایگاه نمایش آمار هستند و هنوز داده‌ای در آن‌ها ثبت نشده است.';notice.classList.add('show');stats.classList.add('show');input.value='';});
+form.addEventListener('submit',function(event){event.preventDefault();const digits=input.value.replace(/[۰-۹]/g,ch=>String(ch.charCodeAt(0)-1776));if(!/^\d{10}$/.test(digits)){notice.textContent='لطفاً یک کد ملی ۱۰ رقمی وارد کن.';notice.classList.add('show');stats.classList.remove('show');return;}notice.textContent='';notice.classList.remove('show');stats.classList.add('show');input.value='';});
 </script>
 </body>
 </html>
