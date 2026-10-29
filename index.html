@@ -33,6 +33,8 @@ button:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .stat:hover{border-color:#7a2d3d;transform:translateY(-2px)}
 .stat h3{font-size:.93rem;margin:0 0 10px;color:#f5e9ed}.stat-value{font-size:.98rem;color:var(--accent)}.stat p{color:var(--muted);font-size:.8rem;line-height:1.8;margin:7px 0 0}
 .manager-panel{display:none;margin:25px auto 0;max-width:900px;width:100%}.manager-panel.show{display:block}.manager-panel h2{text-align:center;font-size:1.2rem;margin:0 0 8px}.manager-intro{text-align:center;color:var(--muted);font-size:.85rem;margin:0 0 18px}.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:22px}.overview-item{background:linear-gradient(145deg,#171316,#101013);border:1px solid #452630;border-radius:14px;padding:16px;text-align:center}.overview-item span{display:block;color:var(--muted);font-size:.82rem;margin-bottom:8px}.overview-item strong{color:var(--accent);font-size:1.3rem}.roster{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px}.roster-item{padding:14px;border:1px solid #35242a;background:#121114;border-radius:10px;font-size:.9rem}.roster-item small{display:block;color:var(--muted);margin-top:4px}.roster-item h3{margin:0 0 10px;font-size:1rem;color:#f5e9ed}.demo-badge{display:block;text-align:center;border:1px dashed #8f6c32;color:#f0c36b;border-radius:9px;padding:9px;margin:0 0 18px;font-size:.82rem}.demo-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px}.demo-stat{background:#1a171b;border-radius:7px;padding:8px;font-size:.78rem;line-height:1.6}.demo-stat b{display:block;color:var(--accent);font-size:.82rem}
+.videos-panel{display:none;max-width:900px;width:100%;margin:0 auto;padding:22px 0}.videos-panel.show{display:block}.videos-heading{text-align:center;margin-bottom:18px}.videos-heading h2{font-size:1.35rem;margin:0 0 8px}.videos-heading p{color:var(--muted);font-size:.88rem;margin:0}.video-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}.video-placeholder{grid-column:1/-1;text-align:center;padding:35px 18px;border:1px dashed #5a3039;border-radius:14px;color:var(--muted);line-height:2;background:#111114}.video-card{overflow:hidden;border:1px solid #42242d;border-radius:14px;background:#111114;padding:12px}.video-card h3{margin:0 0 10px;font-size:1rem}.video-card iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:8px;background:#000}.back-button{max-width:300px;display:block;margin:22px auto 0;background:transparent;color:var(--text);box-shadow:none}
+body.minecraft-theme .video-card,body.minecraft-theme .video-placeholder{border:3px solid #54843a;border-radius:3px;background:#203b24;box-shadow:6px 6px 0 rgba(0,0,0,.28)}
 footer{text-align:center;padding:15px;color:#777177;font-size:.78rem;border-top:1px solid #211a1d}
 @media(max-width:520px){main{padding:25px 0}.hero-logo{width:45px;height:45px;border-radius:12px}.grid{grid-template-columns:1fr}.stat{padding:15px}}
 
@@ -68,7 +70,13 @@ body.minecraft-theme .demo-stat{border:2px solid #4b7737;border-radius:2px;backg
 <section class="hero"><div class="hero-title"><img class="hero-logo" src="InShot_20261027_193444553.jpg" alt="لوگو"><h1 style="font:inherit;margin:0">انضباط من</h1></div></section>
 <section class="card" aria-labelledby="form-title"><h2 id="form-title">مشاهده آمار من</h2>
 <form id="lookup-form" novalidate><label for="national-code">کد اختصاصی ورود</label><input id="national-code" name="national-code" type="password" inputmode="text" autocomplete="off" maxlength="20" aria-label="کد اختصاصی" placeholder="کد اختصاصی خود را وارد کن" required><button type="submit">مشاهده آمار من ←</button></form>
+<button type="button" id="open-videos">مشاهده ویدیوهای آموزشی ▶</button>
 <div class="notice" id="notice" role="status" aria-live="polite"></div>
+</section>
+<section class="videos-panel" id="videos-panel" aria-live="polite">
+  <div class="videos-heading"><h2>ویدیوهای آموزشی</h2><p>ویدیوهای آموزشی در این بخش نمایش داده می‌شوند.</p></div>
+  <div class="video-list" id="video-list"><div class="video-placeholder">هنوز لینکی برای ویدیو اضافه نشده است.<br>لینک ویدیوها را بفرست تا پلیرها را اینجا قرار بدهم.</div></div>
+  <button type="button" id="back-to-login" class="back-button">بازگشت به صفحه ورود ↩</button>
 </section>
 <section class="stats" id="stats" aria-live="polite"><h2 id="stats-title">آمار انضباطی شما</h2><div class="grid">
 <article class="stat"><h3>انضباط در کلاس</h3><div class="stat-value" id="class-discipline-value">عالی! بدون اخطار</div><p>ساکت بودن و رعایت انضباط داخل کلاس</p></article>
@@ -81,11 +89,11 @@ body.minecraft-theme .demo-stat{border:2px solid #4b7737;border-radius:2px;backg
 <section class="manager-panel" id="manager-panel" aria-live="polite"><h2>داشبورد مدیریت</h2><p class="manager-intro">نمای کلی وضعیت کلاس و فهرست دانش‌آموزان</p><div class="demo-badge" style="border-color:#38784b;color:#9ee6ae">نمایش اطلاعات فعلی ثبت‌شده در سایت؛ این آمار از پایگاه داده زنده دریافت نمی‌شود.</div><div class="overview-grid" id="overview-grid"></div><h2>فهرست دانش‌آموزان</h2><div class="roster" id="student-roster"></div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.5.6</footer>
+<footer>انضباط من · نسخه 1.5.7</footer>
 <script>
 
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
-const loginCard=document.querySelector('.card');
+const loginCard=document.querySelector('.card');\nconst videosPanel=document.getElementById('videos-panel');\ndocument.getElementById('open-videos').addEventListener('click',()=>{loginCard.style.display='none';stats.classList.remove('show');document.getElementById('manager-panel').classList.remove('show');videosPanel.classList.add('show');notice.classList.remove('show');});\ndocument.getElementById('back-to-login').addEventListener('click',()=>{videosPanel.classList.remove('show');loginCard.style.display='block';input.value='';});
 const accounts={
   'sahand1392':{name:'سهند',role:'دانش‌آموز'},
   'astro1525':{name:'آرشام',role:'دانش‌آموز'},
@@ -114,6 +122,7 @@ form.addEventListener('submit',function(event){
   if(code==='minecraft'){
     document.body.classList.add('minecraft-theme');
     stats.classList.remove('show');
+    videosPanel.classList.remove('show');
     document.getElementById('manager-panel').classList.remove('show');
     loginCard.style.display='block';
     input.value='';
