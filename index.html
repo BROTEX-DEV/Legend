@@ -35,6 +35,30 @@ button:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .manager-panel{display:none;margin:25px auto 0;max-width:900px;width:100%}.manager-panel.show{display:block}.manager-panel h2{text-align:center;font-size:1.2rem;margin:0 0 8px}.manager-intro{text-align:center;color:var(--muted);font-size:.85rem;margin:0 0 18px}.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:22px}.overview-item{background:linear-gradient(145deg,#171316,#101013);border:1px solid #452630;border-radius:14px;padding:16px;text-align:center}.overview-item span{display:block;color:var(--muted);font-size:.82rem;margin-bottom:8px}.overview-item strong{color:var(--accent);font-size:1.3rem}.roster{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px}.roster-item{padding:14px;border:1px solid #35242a;background:#121114;border-radius:10px;font-size:.9rem}.roster-item small{display:block;color:var(--muted);margin-top:4px}.roster-item h3{margin:0 0 10px;font-size:1rem;color:#f5e9ed}.demo-badge{display:block;text-align:center;border:1px dashed #8f6c32;color:#f0c36b;border-radius:9px;padding:9px;margin:0 0 18px;font-size:.82rem}.demo-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px}.demo-stat{background:#1a171b;border-radius:7px;padding:8px;font-size:.78rem;line-height:1.6}.demo-stat b{display:block;color:var(--accent);font-size:.82rem}
 footer{text-align:center;padding:15px;color:#777177;font-size:.78rem;border-top:1px solid #211a1d}
 @media(max-width:520px){main{padding:25px 0}.hero-logo{width:45px;height:45px;border-radius:12px}.grid{grid-template-columns:1fr}.stat{padding:15px}}
+
+/* Minecraft-style 3D theme, activated by the minecraft code */
+body.minecraft-theme{
+ --bg:#172b19;--panel:#29472b;--text:#f5ffe9;--muted:#c0d8b5;--line:#507d3a;--accent:#70c442;--glow:rgba(112,196,66,.25);
+ background-color:#172b19;
+ background-image:linear-gradient(180deg,rgba(27,58,30,.25),rgba(8,20,10,.88)),repeating-linear-gradient(0deg,transparent 0 39px,rgba(0,0,0,.12) 40px),repeating-linear-gradient(90deg,transparent 0 39px,rgba(0,0,0,.12) 40px),linear-gradient(#5a9a47 0 18%,#345f32 18% 28%,#523c2a 28% 100%);
+ image-rendering:pixelated;
+}
+body.minecraft-theme:before,body.minecraft-theme:after{content:"";position:fixed;z-index:0;pointer-events:none;width:76px;height:76px;background:linear-gradient(135deg,#83d84d 0 24%,#55a638 24% 50%,#34752e 50% 74%,#245a28 74%);border:5px solid rgba(15,40,15,.65);box-shadow:12px 12px 0 rgba(0,0,0,.22),inset -10px -10px 0 rgba(0,0,0,.16);transform:rotate(8deg);animation:mc-float 5s ease-in-out infinite}
+body.minecraft-theme:before{top:17%;left:5%}
+body.minecraft-theme:after{right:6%;bottom:12%;width:54px;height:54px;background:linear-gradient(135deg,#9d7448 0 25%,#805b39 25% 50%,#62452e 50% 75%,#493323 75%);animation-delay:-2.5s}
+body.minecraft-theme main,body.minecraft-theme footer{position:relative;z-index:1}
+body.minecraft-theme .hero-logo{border-radius:3px;border:4px solid #76b94b;box-shadow:6px 6px 0 #24451e,0 0 22px var(--glow)}
+body.minecraft-theme .card,body.minecraft-theme .stat,body.minecraft-theme .overview-item,body.minecraft-theme .roster-item{border:3px solid #54843a;border-radius:3px;background:linear-gradient(135deg,#426b35,#294a2b 55%,#1b3420);box-shadow:7px 7px 0 rgba(0,0,0,.35),inset -5px -5px 0 rgba(0,0,0,.18),inset 4px 4px 0 rgba(184,232,132,.12)}
+body.minecraft-theme .card:before{height:6px;background:repeating-linear-gradient(90deg,#a4e66b 0 18px,#5b9d3b 18px 36px)}
+body.minecraft-theme input{border:3px solid #5e8e43;border-radius:2px;background:#172b19}
+body.minecraft-theme button{border:3px solid #a0d66a;border-radius:2px;background:linear-gradient(#77bd43,#4b8a30);box-shadow:0 5px 0 #28501f,5px 8px 0 rgba(0,0,0,.28);text-shadow:2px 2px #2b5122}
+body.minecraft-theme button:hover{transform:translateY(-2px)}
+body.minecraft-theme .stat-value,body.minecraft-theme .overview-item strong,body.minecraft-theme .demo-stat b{color:#b8f582}
+body.minecraft-theme .demo-stat{border:2px solid #4b7737;border-radius:2px;background:#203b24}
+@keyframes mc-float{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -14px;rotate:5deg}}
+@media(max-width:520px){body.minecraft-theme:before{width:42px;height:42px;left:2%}body.minecraft-theme:after{width:36px;height:36px;right:2%}}
+@media(prefers-reduced-motion:reduce){body.minecraft-theme:before,body.minecraft-theme:after{animation:none}}
+
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -57,7 +81,7 @@ footer{text-align:center;padding:15px;color:#777177;font-size:.78rem;border-top:
 <section class="manager-panel" id="manager-panel" aria-live="polite"><h2>داشبورد مدیریت</h2><p class="manager-intro">نمای کلی وضعیت کلاس و فهرست دانش‌آموزان</p><div class="demo-badge" style="border-color:#38784b;color:#9ee6ae">نمایش اطلاعات فعلی ثبت‌شده در سایت؛ این آمار از پایگاه داده زنده دریافت نمی‌شود.</div><div class="overview-grid" id="overview-grid"></div><h2>فهرست دانش‌آموزان</h2><div class="roster" id="student-roster"></div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.5.4</footer>
+<footer>انضباط من · نسخه 1.5.5</footer>
 <script>
 
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
@@ -80,12 +104,14 @@ const accounts={
   '0960914269':{name:'علی شرف الدین',role:'دانش‌آموز'},
   '1020315':{name:'امیر پارسا باقری',role:'دانش‌آموز'},
   '1400550041':{name:'پرهام سیاسرنژاد',role:'دانش‌آموز'},
+  'minecraft':{name:'Minecraft',role:'دانش‌آموز',theme:'minecraft'},
   'admin1234':{name:'محمدمهدی',role:'مدیر'}
 };
 form.addEventListener('submit',function(event){
   event.preventDefault();
   const code=input.value.trim().replace(/[۰-۹]/g,d=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d))).replace(/[٠-٩]/g,d=>String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)));
   const account=accounts[code];
+  document.body.classList.toggle('minecraft-theme',code==='minecraft');
   if(!account){
     notice.textContent='کد اختصاصی واردشده معتبر نیست.';
     notice.classList.add('show');
