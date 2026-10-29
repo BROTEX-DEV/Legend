@@ -57,7 +57,7 @@ footer{text-align:center;padding:15px;color:#777177;font-size:.78rem;border-top:
 <section class="manager-panel" id="manager-panel" aria-live="polite"><h2>داشبورد مدیریت</h2><p class="manager-intro">نمای کلی وضعیت کلاس و فهرست دانش‌آموزان</p><div class="demo-badge" style="border-color:#38784b;color:#9ee6ae">نمایش اطلاعات فعلی ثبت‌شده در سایت؛ این آمار از پایگاه داده زنده دریافت نمی‌شود.</div><div class="overview-grid" id="overview-grid"></div><h2>فهرست دانش‌آموزان</h2><div class="roster" id="student-roster"></div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.5.3</footer>
+<footer>انضباط من · نسخه 1.5.4</footer>
 <script>
 
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
@@ -103,7 +103,7 @@ form.addEventListener('submit',function(event){
     const students=Object.entries(accounts).filter(([studentCode,student])=>student.role==='دانش‌آموز');
     const demoRecords=students.map(([studentCode,student])=>({
       name:student.name,
-      discipline:studentCode==='0912405206'?'1 اخطار!':'عالی! بدون اخطار',
+      discipline:'عالی! بدون اخطار',
       attendance:0,
       arrival:'عالی! بدون اخطار',
       lateness:'عالی! بدون اخطار',
