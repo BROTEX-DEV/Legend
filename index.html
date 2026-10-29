@@ -32,6 +32,7 @@ button:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .stat{background:linear-gradient(145deg,#171316,#101013);border:1px solid #35242a;border-radius:15px;padding:17px;transition:border-color .18s,transform .18s}
 .stat:hover{border-color:#7a2d3d;transform:translateY(-2px)}
 .stat h3{font-size:.93rem;margin:0 0 10px;color:#f5e9ed}.stat-value{font-size:.98rem;color:var(--accent)}.stat p{color:var(--muted);font-size:.8rem;line-height:1.8;margin:7px 0 0}
+.manager-panel{display:none;margin:25px auto 0;max-width:900px;width:100%}.manager-panel.show{display:block}.manager-panel h2{text-align:center;font-size:1.2rem;margin:0 0 8px}.manager-intro{text-align:center;color:var(--muted);font-size:.85rem;margin:0 0 18px}.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:22px}.overview-item{background:linear-gradient(145deg,#171316,#101013);border:1px solid #452630;border-radius:14px;padding:16px;text-align:center}.overview-item span{display:block;color:var(--muted);font-size:.82rem;margin-bottom:8px}.overview-item strong{color:var(--accent);font-size:1.3rem}.roster{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px}.roster-item{padding:12px 14px;border:1px solid #35242a;background:#121114;border-radius:10px;font-size:.9rem}.roster-item small{display:block;color:var(--muted);margin-top:4px}
 footer{text-align:center;padding:15px;color:#777177;font-size:.78rem;border-top:1px solid #211a1d}
 @media(max-width:520px){main{padding:25px 0}.hero-logo{width:45px;height:45px;border-radius:12px}.grid{grid-template-columns:1fr}.stat{padding:15px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
@@ -53,9 +54,10 @@ footer{text-align:center;padding:15px;color:#777177;font-size:.78rem;border-top:
 <article class="stat"><h3>پاکیزگی در کلاس</h3><div class="stat-value">عالی! بدون اخطار</div><p>تمیز و مرتب بودن میز و صندلی دانش‌آموز</p></article>
 <article class="stat" id="school-notes-card"><h3>توضیحات مدرسه</h3><div class="stat-value">عالی! بدون اخطار</div><p>توضیحاتی که مسئولین درباره انضباط دانش‌آموز ارائه می‌دهند</p></article>
 </div></section>
+<section class="manager-panel" id="manager-panel" aria-live="polite"><h2>داشبورد مدیریت</h2><p class="manager-intro">نمای کلی وضعیت کلاس و فهرست دانش‌آموزان</p><div class="overview-grid" id="overview-grid"></div><h2>فهرست دانش‌آموزان</h2><div class="roster" id="student-roster"></div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.5.0</footer>
+<footer>انضباط من · نسخه 1.5.1</footer>
 <script>
 
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
@@ -96,6 +98,20 @@ form.addEventListener('submit',function(event){
   document.getElementById('class-discipline-value').textContent = code === '0912405206' ? '1 اخطار!' : 'عالی! بدون اخطار';
   stats.classList.add('show');
   loginCard.style.display='none';
+  const managerPanel=document.getElementById('manager-panel');
+  if(account.role==='مدیر'){
+    const students=Object.entries(accounts).filter(([studentCode,student])=>student.role==='دانش‌آموز');
+    const warnings=students.filter(([studentCode])=>studentCode==='0912405206').length;
+    const metrics=[['تعداد دانش‌آموزان',students.length],['تعداد اخطارهای ثبت‌شده',warnings],['غیبت ثبت‌شده',0],['بدون اخطار در کلاس',students.length-warnings]];
+    const overview=document.getElementById('overview-grid'); overview.innerHTML='';
+    metrics.forEach(([label,value])=>{const item=document.createElement('div');item.className='overview-item';const title=document.createElement('span');title.textContent=label;const number=document.createElement('strong');number.textContent=String(value);item.append(title,number);overview.appendChild(item)});
+    const roster=document.getElementById('student-roster');roster.innerHTML='';
+    students.forEach(([studentCode,student],index)=>{const item=document.createElement('div');item.className='roster-item';const name=document.createElement('div');name.textContent=(index+1)+'. '+student.name;const role=document.createElement('small');role.textContent='دانش‌آموز';item.append(name,role);roster.appendChild(item)});
+    managerPanel.classList.add('show');
+    statsTitle.textContent='آمار حساب مدیر سامانه';
+  }else{
+    managerPanel.classList.remove('show');
+  }
   input.value='';
 });
 </script>
