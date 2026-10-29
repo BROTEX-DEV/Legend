@@ -42,7 +42,7 @@ footer{text-align:center;padding:15px;color:#777177;font-size:.78rem;border-top:
 <main>
 <section class="hero"><div class="hero-title"><img class="hero-logo" src="InShot_20261027_193444553.jpg" alt="لوگو"><h1 style="font:inherit;margin:0">انضباط من</h1></div></section>
 <section class="card" aria-labelledby="form-title"><h2 id="form-title">مشاهده آمار من</h2>
-<form id="lookup-form" novalidate><label for="national-code">کد اختصاصی ورود</label><input id="national-code" name="national-code" type="password" inputmode="text" autocomplete="off" maxlength="10" aria-label="کد اختصاصی" placeholder="کد اختصاصی خود را وارد کن" required><button type="submit">مشاهده آمار من ←</button></form>
+<form id="lookup-form" novalidate><label for="national-code">کد اختصاصی ورود</label><input id="national-code" name="national-code" type="password" inputmode="text" autocomplete="off" maxlength="20" aria-label="کد اختصاصی" placeholder="کد اختصاصی خود را وارد کن" required><button type="submit">مشاهده آمار من ←</button></form>
 <div class="notice" id="notice" role="status" aria-live="polite"></div>
 </section>
 <section class="stats" id="stats" aria-live="polite"><h2 id="stats-title">آمار انضباطی شما</h2><div class="grid">
@@ -55,7 +55,7 @@ footer{text-align:center;padding:15px;color:#777177;font-size:.78rem;border-top:
 </div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.4.3</footer>
+<footer>انضباط من · نسخه 1.4.4</footer>
 <script>
 
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
@@ -65,6 +65,15 @@ const accounts={
   'astro1525':{name:'آرشام',role:'دانش‌آموز'},
   'fatemi1234':{name:'امیرحسین',role:'دانش‌آموز'},
   'ilia2667':{name:'ایلیا',role:'دانش‌آموز'},
+  '9979559910':{name:'سامیار صابر',role:'دانش‌آموز'},
+  '1825465469':{name:'بردیا خسروی',role:'دانش‌آموز'},
+  '۱۳۹۳۱۱۹۳۱۴':{name:'رادین رحیمیان',role:'دانش‌آموز'},
+  '۱۲۳۴۵۶۷۸۹۹':{name:'هامین حمزه گلمایی',role:'دانش‌آموز'},
+  'HG1392OUCH':{name:'حسین قربانپور',role:'دانش‌آموز'},
+  '0912405206':{name:'رادین سلطانی',role:'دانش‌آموز'},
+  '۱۳۹۳۰۴۲۸۱۴':{name:'سامیار پوراعتصامی',role:'دانش‌آموز'},
+  'adriyan277':{name:'آدرین معصومی',role:'دانش‌آموز'},
+  '8313931405':{name:'علی صداقتی',role:'دانش‌آموز'},
   'admin1234':{name:'مدیر سامانه',role:'مدیر'}
 };
 form.addEventListener('submit',function(event){
