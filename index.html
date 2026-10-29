@@ -81,7 +81,7 @@ body.minecraft-theme .demo-stat{border:2px solid #4b7737;border-radius:2px;backg
 <section class="manager-panel" id="manager-panel" aria-live="polite"><h2>داشبورد مدیریت</h2><p class="manager-intro">نمای کلی وضعیت کلاس و فهرست دانش‌آموزان</p><div class="demo-badge" style="border-color:#38784b;color:#9ee6ae">نمایش اطلاعات فعلی ثبت‌شده در سایت؛ این آمار از پایگاه داده زنده دریافت نمی‌شود.</div><div class="overview-grid" id="overview-grid"></div><h2>فهرست دانش‌آموزان</h2><div class="roster" id="student-roster"></div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.5.5</footer>
+<footer>انضباط من · نسخه 1.5.6</footer>
 <script>
 
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
@@ -97,21 +97,42 @@ const accounts={
   '1234567899':{name:'هامین حمزه گلمایی',role:'دانش‌آموز'},
   'HG1392OUCH':{name:'حسین قربانپور',role:'دانش‌آموز'},
   '0912405206':{name:'رادین سلطانی',role:'دانش‌آموز'},
-  // رادین سلطانی: یک اخطار در بخش انضباط در کلاس
   '1393042814':{name:'سامیار پوراعتصامی',role:'دانش‌آموز'},
   'adriyan277':{name:'آدرین معصومی',role:'دانش‌آموز'},
   '8313931405':{name:'علی صداقتی',role:'دانش‌آموز'},
   '0960914269':{name:'علی شرف الدین',role:'دانش‌آموز'},
   '1020315':{name:'امیر پارسا باقری',role:'دانش‌آموز'},
   '1400550041':{name:'پرهام سیاسرنژاد',role:'دانش‌آموز'},
-  'minecraft':{name:'Minecraft',role:'دانش‌آموز',theme:'minecraft'},
+  'minecraft':{name:'Minecraft',role:'theme-command',theme:'minecraft'},
+  'dontcraft':{name:'غیرفعال‌سازی تم Minecraft',role:'theme-command',theme:'default'},
   'admin1234':{name:'محمدمهدی',role:'مدیر'}
 };
 form.addEventListener('submit',function(event){
   event.preventDefault();
   const code=input.value.trim().replace(/[۰-۹]/g,d=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d))).replace(/[٠-٩]/g,d=>String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)));
   const account=accounts[code];
-  document.body.classList.toggle('minecraft-theme',code==='minecraft');
+  if(code==='minecraft'){
+    document.body.classList.add('minecraft-theme');
+    stats.classList.remove('show');
+    document.getElementById('manager-panel').classList.remove('show');
+    loginCard.style.display='block';
+    input.value='';
+    notice.textContent='تم Minecraft فعال شد! حالا کد اختصاصی خودت را وارد کن.';
+    notice.classList.add('show');
+    input.focus();
+    return;
+  }
+  if(code==='dontcraft'){
+    document.body.classList.remove('minecraft-theme');
+    stats.classList.remove('show');
+    document.getElementById('manager-panel').classList.remove('show');
+    loginCard.style.display='block';
+    input.value='';
+    notice.textContent='تم Minecraft غیرفعال شد. حالا کد اختصاصی خودت را وارد کن.';
+    notice.classList.add('show');
+    input.focus();
+    return;
+  }
   if(!account){
     notice.textContent='کد اختصاصی واردشده معتبر نیست.';
     notice.classList.add('show');
@@ -121,7 +142,7 @@ form.addEventListener('submit',function(event){
   notice.textContent='';
   notice.classList.remove('show');
   statsTitle.textContent='خلاصه آمار · '+account.name;
-  document.getElementById('class-discipline-value').textContent = code === '0912405206' ? '1 اخطار!' : 'عالی! بدون اخطار';
+  document.getElementById('class-discipline-value').textContent = 'عالی! بدون اخطار';
   stats.classList.add('show');
   loginCard.style.display='none';
   const managerPanel=document.getElementById('manager-panel');
