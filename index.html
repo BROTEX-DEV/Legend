@@ -89,11 +89,14 @@ body.minecraft-theme .demo-stat{border:2px solid #4b7737;border-radius:2px;backg
 <section class="manager-panel" id="manager-panel" aria-live="polite"><h2>داشبورد مدیریت</h2><p class="manager-intro">نمای کلی وضعیت کلاس و فهرست دانش‌آموزان</p><div class="demo-badge" style="border-color:#38784b;color:#9ee6ae">نمایش اطلاعات فعلی ثبت‌شده در سایت؛ این آمار از پایگاه داده زنده دریافت نمی‌شود.</div><div class="overview-grid" id="overview-grid"></div><h2>فهرست دانش‌آموزان</h2><div class="roster" id="student-roster"></div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.5.8</footer>
+<footer>انضباط من · نسخه 1.5.9</footer>
 <script>
 
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
-const loginCard=document.querySelector('.card');\nconst videosPanel=document.getElementById('videos-panel');\ndocument.getElementById('open-videos').addEventListener('click',()=>{loginCard.style.display='none';stats.classList.remove('show');document.getElementById('manager-panel').classList.remove('show');videosPanel.classList.add('show');notice.classList.remove('show');});\ndocument.getElementById('back-to-login').addEventListener('click',()=>{videosPanel.classList.remove('show');loginCard.style.display='block';input.value='';});
+const loginCard=document.querySelector('.card');
+const videosPanel=document.getElementById('videos-panel');
+document.getElementById('open-videos').addEventListener('click',()=>{loginCard.style.display='none';stats.classList.remove('show');document.getElementById('manager-panel').classList.remove('show');videosPanel.classList.add('show');notice.classList.remove('show');});
+document.getElementById('back-to-login').addEventListener('click',()=>{videosPanel.classList.remove('show');loginCard.style.display='block';input.value='';});
 const accounts={
   'sahand1392':{name:'سهند',role:'دانش‌آموز'},
   'astro1525':{name:'آرشام',role:'دانش‌آموز'},
