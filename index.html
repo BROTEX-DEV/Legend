@@ -46,7 +46,7 @@ footer{text-align:center;padding:15px;color:#777177;font-size:.78rem;border-top:
 <div class="notice" id="notice" role="status" aria-live="polite"></div>
 </section>
 <section class="stats" id="stats" aria-live="polite"><h2 id="stats-title">آمار انضباطی شما</h2><div class="grid">
-<article class="stat"><h3>انضباط در کلاس</h3><div class="stat-value">عالی! بدون اخطار</div><p>ساکت بودن و رعایت انضباط داخل کلاس</p></article>
+<article class="stat"><h3>انضباط در کلاس</h3><div class="stat-value" id="class-discipline-value">عالی! بدون اخطار</div><p>ساکت بودن و رعایت انضباط داخل کلاس</p></article>
 <article class="stat"><h3>ورود و خروج از کلاس</h3><div class="stat-value">عالی! بدون اخطار</div><p>به‌موقع وارد و خارج شدن از کلاس در زنگ‌های تفریح</p></article>
 <article class="stat"><h3>غیبت در کلاس</h3><div class="stat-value">0 غیبت</div><p>حاضر نبودن دانش‌آموز در کلاس</p></article>
 <article class="stat"><h3>تأخیر در ورود به کلاس</h3><div class="stat-value">عالی! بدون اخطار</div><p>دیر یا به‌موقع نیامدن دانش‌آموز به کلاس</p></article>
@@ -55,7 +55,7 @@ footer{text-align:center;padding:15px;color:#777177;font-size:.78rem;border-top:
 </div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.4.5</footer>
+<footer>انضباط من · نسخه 1.4.6</footer>
 <script>
 
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
@@ -71,6 +71,7 @@ const accounts={
   '1234567899':{name:'هامین حمزه گلمایی',role:'دانش‌آموز'},
   'HG1392OUCH':{name:'حسین قربانپور',role:'دانش‌آموز'},
   '0912405206':{name:'رادین سلطانی',role:'دانش‌آموز'},
+  // رادین سلطانی: یک اخطار در بخش انضباط در کلاس
   '1393042814':{name:'سامیار پوراعتصامی',role:'دانش‌آموز'},
   'adriyan277':{name:'آدرین معصومی',role:'دانش‌آموز'},
   '8313931405':{name:'علی صداقتی',role:'دانش‌آموز'},
@@ -89,6 +90,7 @@ form.addEventListener('submit',function(event){
   notice.textContent='';
   notice.classList.remove('show');
   statsTitle.textContent='خلاصه آمار · '+account.name;
+  document.getElementById('class-discipline-value').textContent = code === '0912405206' ? '1 اخطار!' : 'عالی! بدون اخطار';
   stats.classList.add('show');
   loginCard.style.display='none';
   input.value='';
