@@ -54,10 +54,10 @@ footer{text-align:center;padding:15px;color:#777177;font-size:.78rem;border-top:
 <article class="stat"><h3>پاکیزگی در کلاس</h3><div class="stat-value">عالی! بدون اخطار</div><p>تمیز و مرتب بودن میز و صندلی دانش‌آموز</p></article>
 <article class="stat" id="school-notes-card"><h3>توضیحات مدرسه</h3><div class="stat-value">عالی! بدون اخطار</div><p>توضیحاتی که مسئولین درباره انضباط دانش‌آموز ارائه می‌دهند</p></article>
 </div></section>
-<section class="manager-panel" id="manager-panel" aria-live="polite"><h2>داشبورد مدیریت</h2><p class="manager-intro">نمای کلی وضعیت کلاس و فهرست دانش‌آموزان</p><div class="demo-badge">حالت آزمایشی — اطلاعات کارت‌ها نمونه هستند و آمار واقعی دانش‌آموزان را نشان نمی‌دهند.</div><div class="overview-grid" id="overview-grid"></div><h2>فهرست دانش‌آموزان</h2><div class="roster" id="student-roster"></div></section>
+<section class="manager-panel" id="manager-panel" aria-live="polite"><h2>داشبورد مدیریت</h2><p class="manager-intro">نمای کلی وضعیت کلاس و فهرست دانش‌آموزان</p><div class="demo-badge" style="border-color:#38784b;color:#9ee6ae">نمایش اطلاعات فعلی ثبت‌شده در سایت؛ این آمار از پایگاه داده زنده دریافت نمی‌شود.</div><div class="overview-grid" id="overview-grid"></div><h2>فهرست دانش‌آموزان</h2><div class="roster" id="student-roster"></div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.5.2</footer>
+<footer>انضباط من · نسخه 1.5.3</footer>
 <script>
 
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
@@ -101,14 +101,33 @@ form.addEventListener('submit',function(event){
   const managerPanel=document.getElementById('manager-panel');
   if(account.role==='مدیر'){
     const students=Object.entries(accounts).filter(([studentCode,student])=>student.role==='دانش‌آموز');
-    const demoRecords=Array.from({length:students.length},(_,i)=>({name:'دانش‌آموز آزمایشی '+(i+1),discipline:i===2?'1 اخطار!':'عالی! بدون اخطار',attendance:i===5?1:0,arrival:i===4?'یک تأخیر نمونه':'به‌موقع',cleanliness:'20 از 20',notes:i===2?'توضیح نمونه: نیازمند توجه بیشتر':'بدون توضیح نمونه'}));
+    const demoRecords=students.map(([studentCode,student])=>({
+      name:student.name,
+      discipline:studentCode==='0912405206'?'1 اخطار!':'عالی! بدون اخطار',
+      attendance:0,
+      arrival:'عالی! بدون اخطار',
+      lateness:'عالی! بدون اخطار',
+      cleanliness:'عالی! بدون اخطار',
+      notes:'عالی! بدون اخطار'
+    }));
     const warnings=demoRecords.filter(s=>s.discipline!=='عالی! بدون اخطار').length;
     const absences=demoRecords.reduce((sum,s)=>sum+s.attendance,0);
-    const metrics=[['تعداد کارت‌های آزمایشی',demoRecords.length],['اخطارهای نمونه',warnings],['غیبت‌های نمونه',absences],['بدون اخطار در کلاس',demoRecords.length-warnings]];
+    const metrics=[['تعداد دانش‌آموزان',demoRecords.length],['اخطارهای ثبت‌شده',warnings],['مجموع غیبت‌ها',absences],['بدون اخطار در کلاس',demoRecords.length-warnings]];
     const overview=document.getElementById('overview-grid'); overview.innerHTML='';
     metrics.forEach(([label,value])=>{const item=document.createElement('div');item.className='overview-item';const title=document.createElement('span');title.textContent=label;const number=document.createElement('strong');number.textContent=String(value);item.append(title,number);overview.appendChild(item)});
     const roster=document.getElementById('student-roster');roster.innerHTML='';
-    demoRecords.forEach(student=>{const item=document.createElement('article');item.className='roster-item';const title=document.createElement('h3');title.textContent=student.name;const grid=document.createElement('div');grid.className='demo-stats';[['انضباط در کلاس',student.discipline],['ورود و خروج','نمونه: به‌موقع'],['غیبت‌ها',String(student.attendance)],['تأخیر',student.arrival],['پاکیزگی در کلاس',student.cleanliness],['توضیحات مدرسه',student.notes]].forEach(([label,value])=>{const stat=document.createElement('div');stat.className='demo-stat';const labelNode=document.createElement('span');labelNode.textContent=label;const valueNode=document.createElement('b');valueNode.textContent=value;stat.append(labelNode,valueNode);grid.appendChild(stat)});item.append(title,grid);roster.appendChild(item)});
+    demoRecords.forEach(student=>{
+      const item=document.createElement('article');item.className='roster-item';
+      const title=document.createElement('h3');title.textContent=student.name;
+      const grid=document.createElement('div');grid.className='demo-stats';
+      [['انضباط در کلاس',student.discipline],['ورود و خروج از کلاس',student.arrival],['غیبت در کلاس',String(student.attendance)+' غیبت'],['تأخیر در ورود به کلاس',student.lateness],['پاکیزگی در کلاس',student.cleanliness],['توضیحات مدرسه',student.notes]].forEach(([label,value])=>{
+        const stat=document.createElement('div');stat.className='demo-stat';
+        const labelNode=document.createElement('span');labelNode.textContent=label;
+        const valueNode=document.createElement('b');valueNode.textContent=value;
+        stat.append(labelNode,valueNode);grid.appendChild(stat)
+      });
+      item.append(title,grid);roster.appendChild(item)
+    });
     managerPanel.classList.add('show');
     statsTitle.textContent='آمار حساب مدیر سامانه';
   }else{
