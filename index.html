@@ -143,7 +143,7 @@ input:focus{transform:translateZ(8px);box-shadow:inset 0 4px 10px rgba(0,0,0,.45
 }
 
 
-/* CUSTOM CURSOR v1.5.13 */
+/* CUSTOM CURSOR v1.5.14 */
 @media (hover:hover) and (pointer:fine){
 body,body *{cursor:none!important}
 #custom-cursor-ring,#custom-cursor-dot{position:fixed;left:0;top:0;pointer-events:none;z-index:99999;opacity:0;will-change:transform}
@@ -153,6 +153,85 @@ body.cursor-ready #custom-cursor-ring,body.cursor-ready #custom-cursor-dot{opaci
 body.cursor-hover #custom-cursor-ring{width:44px;height:44px;margin:-22px 0 0 -22px;background:rgba(241,45,75,.12);border-color:#fff}
 }
 @media(prefers-reduced-motion:reduce){#custom-cursor-ring,#custom-cursor-dot{transition:none!important}}
+
+/* VISUAL REFRESH v1.5.14 — sleek depth, not excessive 3D */
+body:not(.minecraft-theme){
+  background:
+    radial-gradient(ellipse at 50% -10%,rgba(241,45,75,.17),transparent 48%),
+    radial-gradient(ellipse at 0% 100%,rgba(94,23,43,.12),transparent 38%),
+    #09090b;
+  background-attachment:fixed;
+}
+body:not(.minecraft-theme) main{perspective:none;transform:none}
+body:not(.minecraft-theme) .hero{transform:none;animation:hero-depth-in .55s ease both}
+body:not(.minecraft-theme) .hero-logo{
+  transform:none;
+  border:1px solid rgba(241,45,75,.55);
+  box-shadow:0 0 0 5px rgba(241,45,75,.045),0 8px 24px rgba(0,0,0,.32);
+}
+body:not(.minecraft-theme) .hero-logo:hover{transform:scale(1.035);box-shadow:0 0 0 6px rgba(241,45,75,.07),0 10px 26px rgba(0,0,0,.35)}
+body:not(.minecraft-theme) .card,
+body:not(.minecraft-theme) .stat,
+body:not(.minecraft-theme) .overview-item,
+body:not(.minecraft-theme) .roster-item,
+body:not(.minecraft-theme) .video-card{
+  transform:none;
+  border:1px solid #39232a;
+  border-radius:17px;
+  box-shadow:0 10px 28px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.025);
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+body:not(.minecraft-theme) .card{border-color:#542632;background:linear-gradient(145deg,rgba(25,18,21,.98),rgba(14,14,17,.98))}
+body:not(.minecraft-theme) .card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(0,0,0,.3),0 0 22px rgba(241,45,75,.055);
+}
+body:not(.minecraft-theme) .stat:hover,
+body:not(.minecraft-theme) .overview-item:hover,
+body:not(.minecraft-theme) .roster-item:hover,
+body:not(.minecraft-theme) .video-card:hover{
+  transform:translateY(-3px);
+  border-color:#71303e;
+  box-shadow:0 12px 27px rgba(0,0,0,.27);
+}
+body:not(.minecraft-theme) button{
+  animation:none;
+  transform:none;
+  border:1px solid #ff526b;
+  border-bottom:2px solid #a91e39;
+  border-radius:11px;
+  background:linear-gradient(110deg,#cf203e,#f13d59);
+  box-shadow:0 5px 15px rgba(241,45,75,.14),inset 0 1px 0 rgba(255,255,255,.2);
+  text-shadow:none;
+}
+body:not(.minecraft-theme) button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 19px rgba(241,45,75,.2),inset 0 1px 0 rgba(255,255,255,.2);
+}
+body:not(.minecraft-theme) button:active{
+  transform:translateY(1px) scale(.995);
+  border-bottom-width:1px;
+  box-shadow:0 2px 7px rgba(0,0,0,.25);
+}
+body:not(.minecraft-theme) input{
+  border-color:#3a2930;
+  border-radius:10px;
+  box-shadow:inset 0 2px 7px rgba(0,0,0,.25);
+}
+body:not(.minecraft-theme) input:focus{transform:none}
+body:not(.minecraft-theme) .stat-value{text-shadow:0 0 10px rgba(241,45,75,.12)}
+body:not(.minecraft-theme) footer{border-top-color:#241a1e}
+@media(prefers-reduced-motion:reduce){
+  body:not(.minecraft-theme) .hero{animation:none!important}
+  body:not(.minecraft-theme) .card,
+  body:not(.minecraft-theme) .stat,
+  body:not(.minecraft-theme) .overview-item,
+  body:not(.minecraft-theme) .roster-item,
+  body:not(.minecraft-theme) .video-card,
+  body:not(.minecraft-theme) button,
+  body:not(.minecraft-theme) .hero-logo{transition:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -181,7 +260,7 @@ body.cursor-hover #custom-cursor-ring{width:44px;height:44px;margin:-22px 0 0 -2
 <section class="manager-panel" id="manager-panel" aria-live="polite"><h2>داشبورد مدیریت</h2><p class="manager-intro">نمای کلی وضعیت کلاس و فهرست دانش‌آموزان</p><div class="demo-badge" style="border-color:#38784b;color:#9ee6ae">نمایش اطلاعات فعلی ثبت‌شده در سایت؛ این آمار از پایگاه داده زنده دریافت نمی‌شود.</div><div class="overview-grid" id="overview-grid"></div><h2>فهرست دانش‌آموزان</h2><div class="roster" id="student-roster"></div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.5.13</footer>
+<footer>انضباط من · نسخه 1.5.14</footer>
 <script>
 
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
