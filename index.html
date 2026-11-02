@@ -34,33 +34,41 @@ button:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .stat h3{font-size:.93rem;margin:0 0 10px;color:#f5e9ed}.stat-value{font-size:.98rem;color:var(--accent)}.stat p{color:var(--muted);font-size:.8rem;line-height:1.8;margin:7px 0 0}
 .manager-panel{display:none;margin:25px auto 0;max-width:900px;width:100%}.manager-panel.show{display:block}.manager-panel h2{text-align:center;font-size:1.2rem;margin:0 0 8px}.manager-intro{text-align:center;color:var(--muted);font-size:.85rem;margin:0 0 18px}.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:22px}.overview-item{background:linear-gradient(145deg,#171316,#101013);border:1px solid #452630;border-radius:14px;padding:16px;text-align:center}.overview-item span{display:block;color:var(--muted);font-size:.82rem;margin-bottom:8px}.overview-item strong{color:var(--accent);font-size:1.3rem}.roster{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px}.roster-item{padding:14px;border:1px solid #35242a;background:#121114;border-radius:10px;font-size:.9rem}.roster-item small{display:block;color:var(--muted);margin-top:4px}.roster-item h3{margin:0 0 10px;font-size:1rem;color:#f5e9ed}.demo-badge{display:block;text-align:center;border:1px dashed #8f6c32;color:#f0c36b;border-radius:9px;padding:9px;margin:0 0 18px;font-size:.82rem}.demo-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px}.demo-stat{background:#1a171b;border-radius:7px;padding:8px;font-size:.78rem;line-height:1.6}.demo-stat b{display:block;color:var(--accent);font-size:.82rem}
 .videos-panel{display:none;max-width:900px;width:100%;margin:0 auto;padding:22px 0}.videos-panel.show{display:block}.videos-panel[hidden],#open-videos[hidden]{display:none!important}.videos-heading{text-align:center;margin-bottom:18px}.videos-heading h2{font-size:1.35rem;margin:0 0 8px}.videos-heading p{color:var(--muted);font-size:.88rem;margin:0}.video-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}.video-placeholder{grid-column:1/-1;text-align:center;padding:35px 18px;border:1px dashed #5a3039;border-radius:14px;color:var(--muted);line-height:2;background:#111114}.video-card{overflow:hidden;border:1px solid #42242d;border-radius:14px;background:#111114;padding:12px}.video-card h3{margin:0 0 10px;font-size:1rem}.video-card iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:8px;background:#000}.back-button{max-width:300px;display:block;margin:22px auto 0;background:transparent;color:var(--text);box-shadow:none}
-body.minecraft-theme .video-card,body.minecraft-theme .video-placeholder{border:3px solid #54843a;border-radius:3px;background:#203b24;box-shadow:6px 6px 0 rgba(0,0,0,.28)}
+body.roblox-theme .video-card,body.roblox-theme .video-placeholder{border:3px solid #54843a;border-radius:3px;background:#203b24;box-shadow:6px 6px 0 rgba(0,0,0,.28)}
 footer{text-align:center;padding:15px;color:#777177;font-size:.78rem;border-top:1px solid #211a1d}
 @media(max-width:520px){main{padding:25px 0}.hero-logo{width:45px;height:45px;border-radius:12px}.grid{grid-template-columns:1fr}.stat{padding:15px}}
 
-/* Minecraft-style 3D theme, activated by the minecraft code */
-body.minecraft-theme{
- --bg:#172b19;--panel:#29472b;--text:#f5ffe9;--muted:#c0d8b5;--line:#507d3a;--accent:#70c442;--glow:rgba(112,196,66,.25);
- background-color:#172b19;
- background-image:linear-gradient(180deg,rgba(27,58,30,.25),rgba(8,20,10,.88)),repeating-linear-gradient(0deg,transparent 0 39px,rgba(0,0,0,.12) 40px),repeating-linear-gradient(90deg,transparent 0 39px,rgba(0,0,0,.12) 40px),linear-gradient(#5a9a47 0 18%,#345f32 18% 28%,#523c2a 28% 100%);
- image-rendering:pixelated;
+/* Roblox-inspired block theme, activated by code: roblox */
+body.roblox-theme{
+ --bg:#111318;--panel:#20242d;--text:#fff;--muted:#c4c7ce;--line:#3a414d;--accent:#ff343d;--glow:rgba(255,52,61,.22);
+ background-color:#111318;
+ background-image:radial-gradient(ellipse at 50% 0%,rgba(255,52,61,.24),transparent 48%),linear-gradient(145deg,#111318,#171a21 55%,#0c0e12);
 }
-body.minecraft-theme:before,body.minecraft-theme:after{content:"";position:fixed;z-index:0;pointer-events:none;width:76px;height:76px;background:linear-gradient(135deg,#83d84d 0 24%,#55a638 24% 50%,#34752e 50% 74%,#245a28 74%);border:5px solid rgba(15,40,15,.65);box-shadow:12px 12px 0 rgba(0,0,0,.22),inset -10px -10px 0 rgba(0,0,0,.16);transform:rotate(8deg);animation:mc-float 5s ease-in-out infinite}
-body.minecraft-theme:before{top:17%;left:5%}
-body.minecraft-theme:after{right:6%;bottom:12%;width:54px;height:54px;background:linear-gradient(135deg,#9d7448 0 25%,#805b39 25% 50%,#62452e 50% 75%,#493323 75%);animation-delay:-2.5s}
-body.minecraft-theme main,body.minecraft-theme footer{position:relative;z-index:1}
-body.minecraft-theme .hero-logo{border-radius:3px;border:4px solid #76b94b;box-shadow:6px 6px 0 #24451e,0 0 22px var(--glow)}
-body.minecraft-theme .card,body.minecraft-theme .stat,body.minecraft-theme .overview-item,body.minecraft-theme .roster-item{border:3px solid #54843a;border-radius:3px;background:linear-gradient(135deg,#426b35,#294a2b 55%,#1b3420);box-shadow:7px 7px 0 rgba(0,0,0,.35),inset -5px -5px 0 rgba(0,0,0,.18),inset 4px 4px 0 rgba(184,232,132,.12)}
-body.minecraft-theme .card:before{height:6px;background:repeating-linear-gradient(90deg,#a4e66b 0 18px,#5b9d3b 18px 36px)}
-body.minecraft-theme input{border:3px solid #5e8e43;border-radius:2px;background:#172b19}
-body.minecraft-theme button{border:3px solid #a0d66a;border-radius:2px;background:linear-gradient(#77bd43,#4b8a30);box-shadow:0 5px 0 #28501f,5px 8px 0 rgba(0,0,0,.28);text-shadow:2px 2px #2b5122}
-body.minecraft-theme button:hover{transform:translateY(-2px)}
-body.minecraft-theme .stat-value,body.minecraft-theme .overview-item strong,body.minecraft-theme .demo-stat b{color:#b8f582}
-body.minecraft-theme .demo-stat{border:2px solid #4b7737;border-radius:2px;background:#203b24}
-@keyframes mc-float{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -14px;rotate:5deg}}
-@media(max-width:520px){body.minecraft-theme:before{width:42px;height:42px;left:2%}body.minecraft-theme:after{width:36px;height:36px;right:2%}}
-@media(prefers-reduced-motion:reduce){body.minecraft-theme:before,body.minecraft-theme:after{animation:none}}
-
+body.roblox-theme:before,body.roblox-theme:after{
+ content:"";position:fixed;z-index:0;pointer-events:none;width:74px;height:74px;
+ background:linear-gradient(135deg,#ff4a50 0 25%,#e32834 25% 50%,#b71f2b 50% 75%,#861923 75%);
+ border:4px solid rgba(255,255,255,.13);border-radius:9px;
+ box-shadow:8px 9px 0 rgba(0,0,0,.32),inset -7px -7px 0 rgba(0,0,0,.13);
+ transform:rotate(-8deg);animation:rb-float 5s ease-in-out infinite;
+}
+body.roblox-theme:before{top:17%;left:5%}
+body.roblox-theme:after{right:6%;bottom:12%;width:54px;height:54px;background:linear-gradient(135deg,#f5f6f8 0 25%,#cbd0d8 25% 50%,#939ba8 50% 75%,#626b79 75%);animation-delay:-2.5s}
+body.roblox-theme main,body.roblox-theme footer{position:relative;z-index:1}
+body.roblox-theme .hero-logo{border-radius:12px;border:3px solid #ff555d;box-shadow:5px 5px 0 #6e1720,0 0 22px var(--glow)}
+body.roblox-theme .card,body.roblox-theme .stat,body.roblox-theme .overview-item,body.roblox-theme .roster-item,body.roblox-theme .video-card,body.roblox-theme .video-placeholder{
+ border:2px solid #3c414b;border-radius:12px;background:linear-gradient(145deg,#252a34,#171a21);
+ box-shadow:5px 6px 0 rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.06);
+}
+body.roblox-theme .card:before{height:4px;background:linear-gradient(90deg,#ff343d,#ff8b45,#ff343d)}
+body.roblox-theme input{border:2px solid #454b57;border-radius:8px;background:#101217}
+body.roblox-theme button{border:2px solid #ff777d;border-bottom:4px solid #a91e2a;border-radius:8px;background:linear-gradient(#ff4a50,#d92331);box-shadow:0 4px 0 #811923,4px 6px 0 rgba(0,0,0,.25);text-shadow:1px 1px rgba(0,0,0,.2)}
+body.roblox-theme button:hover{transform:translateY(-2px);filter:brightness(1.08)}
+body.roblox-theme .stat-value,body.roblox-theme .overview-item strong,body.roblox-theme .demo-stat b{color:#ff666d}
+body.roblox-theme .demo-stat{border:1px solid #414753;border-radius:7px;background:#1a1e26}
+body.roblox-theme .notice{background:#261519;border-color:#8d2933}
+@keyframes rb-float{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -10px;rotate:4deg}}
+@media(max-width:520px){body.roblox-theme:before{width:42px;height:42px;left:2%}body.roblox-theme:after{width:36px;height:36px;right:2%}}
+@media(prefers-reduced-motion:reduce){body.roblox-theme:before,body.roblox-theme:after{animation:none}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
 
 /* NEVAR 3D UPGRADE v1.5.11 */
@@ -143,7 +151,7 @@ input:focus{transform:translateZ(8px);box-shadow:inset 0 4px 10px rgba(0,0,0,.45
 }
 
 
-/* CUSTOM CURSOR v1.5.14 */
+/* CUSTOM CURSOR v1.5.15 */
 @media (hover:hover) and (pointer:fine){
 body,body *{cursor:none!important}
 #custom-cursor-ring,#custom-cursor-dot{position:fixed;left:0;top:0;pointer-events:none;z-index:99999;opacity:0;will-change:transform}
@@ -154,47 +162,47 @@ body.cursor-hover #custom-cursor-ring{width:44px;height:44px;margin:-22px 0 0 -2
 }
 @media(prefers-reduced-motion:reduce){#custom-cursor-ring,#custom-cursor-dot{transition:none!important}}
 
-/* VISUAL REFRESH v1.5.14 — sleek depth, not excessive 3D */
-body:not(.minecraft-theme){
+/* VISUAL REFRESH v1.5.15 — sleek depth, not excessive 3D */
+body:not(.roblox-theme){
   background:
     radial-gradient(ellipse at 50% -10%,rgba(241,45,75,.17),transparent 48%),
     radial-gradient(ellipse at 0% 100%,rgba(94,23,43,.12),transparent 38%),
     #09090b;
   background-attachment:fixed;
 }
-body:not(.minecraft-theme) main{perspective:none;transform:none}
-body:not(.minecraft-theme) .hero{transform:none;animation:hero-depth-in .55s ease both}
-body:not(.minecraft-theme) .hero-logo{
+body:not(.roblox-theme) main{perspective:none;transform:none}
+body:not(.roblox-theme) .hero{transform:none;animation:hero-depth-in .55s ease both}
+body:not(.roblox-theme) .hero-logo{
   transform:none;
   border:1px solid rgba(241,45,75,.55);
   box-shadow:0 0 0 5px rgba(241,45,75,.045),0 8px 24px rgba(0,0,0,.32);
 }
-body:not(.minecraft-theme) .hero-logo:hover{transform:scale(1.035);box-shadow:0 0 0 6px rgba(241,45,75,.07),0 10px 26px rgba(0,0,0,.35)}
-body:not(.minecraft-theme) .card,
-body:not(.minecraft-theme) .stat,
-body:not(.minecraft-theme) .overview-item,
-body:not(.minecraft-theme) .roster-item,
-body:not(.minecraft-theme) .video-card{
+body:not(.roblox-theme) .hero-logo:hover{transform:scale(1.035);box-shadow:0 0 0 6px rgba(241,45,75,.07),0 10px 26px rgba(0,0,0,.35)}
+body:not(.roblox-theme) .card,
+body:not(.roblox-theme) .stat,
+body:not(.roblox-theme) .overview-item,
+body:not(.roblox-theme) .roster-item,
+body:not(.roblox-theme) .video-card{
   transform:none;
   border:1px solid #39232a;
   border-radius:17px;
   box-shadow:0 10px 28px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.025);
   transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
 }
-body:not(.minecraft-theme) .card{border-color:#542632;background:linear-gradient(145deg,rgba(25,18,21,.98),rgba(14,14,17,.98))}
-body:not(.minecraft-theme) .card:hover{
+body:not(.roblox-theme) .card{border-color:#542632;background:linear-gradient(145deg,rgba(25,18,21,.98),rgba(14,14,17,.98))}
+body:not(.roblox-theme) .card:hover{
   transform:translateY(-2px);
   box-shadow:0 14px 32px rgba(0,0,0,.3),0 0 22px rgba(241,45,75,.055);
 }
-body:not(.minecraft-theme) .stat:hover,
-body:not(.minecraft-theme) .overview-item:hover,
-body:not(.minecraft-theme) .roster-item:hover,
-body:not(.minecraft-theme) .video-card:hover{
+body:not(.roblox-theme) .stat:hover,
+body:not(.roblox-theme) .overview-item:hover,
+body:not(.roblox-theme) .roster-item:hover,
+body:not(.roblox-theme) .video-card:hover{
   transform:translateY(-3px);
   border-color:#71303e;
   box-shadow:0 12px 27px rgba(0,0,0,.27);
 }
-body:not(.minecraft-theme) button{
+body:not(.roblox-theme) button{
   animation:none;
   transform:none;
   border:1px solid #ff526b;
@@ -204,32 +212,32 @@ body:not(.minecraft-theme) button{
   box-shadow:0 5px 15px rgba(241,45,75,.14),inset 0 1px 0 rgba(255,255,255,.2);
   text-shadow:none;
 }
-body:not(.minecraft-theme) button:hover{
+body:not(.roblox-theme) button:hover{
   transform:translateY(-2px);
   box-shadow:0 8px 19px rgba(241,45,75,.2),inset 0 1px 0 rgba(255,255,255,.2);
 }
-body:not(.minecraft-theme) button:active{
+body:not(.roblox-theme) button:active{
   transform:translateY(1px) scale(.995);
   border-bottom-width:1px;
   box-shadow:0 2px 7px rgba(0,0,0,.25);
 }
-body:not(.minecraft-theme) input{
+body:not(.roblox-theme) input{
   border-color:#3a2930;
   border-radius:10px;
   box-shadow:inset 0 2px 7px rgba(0,0,0,.25);
 }
-body:not(.minecraft-theme) input:focus{transform:none}
-body:not(.minecraft-theme) .stat-value{text-shadow:0 0 10px rgba(241,45,75,.12)}
-body:not(.minecraft-theme) footer{border-top-color:#241a1e}
+body:not(.roblox-theme) input:focus{transform:none}
+body:not(.roblox-theme) .stat-value{text-shadow:0 0 10px rgba(241,45,75,.12)}
+body:not(.roblox-theme) footer{border-top-color:#241a1e}
 @media(prefers-reduced-motion:reduce){
-  body:not(.minecraft-theme) .hero{animation:none!important}
-  body:not(.minecraft-theme) .card,
-  body:not(.minecraft-theme) .stat,
-  body:not(.minecraft-theme) .overview-item,
-  body:not(.minecraft-theme) .roster-item,
-  body:not(.minecraft-theme) .video-card,
-  body:not(.minecraft-theme) button,
-  body:not(.minecraft-theme) .hero-logo{transition:none!important}
+  body:not(.roblox-theme) .hero{animation:none!important}
+  body:not(.roblox-theme) .card,
+  body:not(.roblox-theme) .stat,
+  body:not(.roblox-theme) .overview-item,
+  body:not(.roblox-theme) .roster-item,
+  body:not(.roblox-theme) .video-card,
+  body:not(.roblox-theme) button,
+  body:not(.roblox-theme) .hero-logo{transition:none!important}
 }
 
 </style>
@@ -260,7 +268,7 @@ body:not(.minecraft-theme) footer{border-top-color:#241a1e}
 <section class="manager-panel" id="manager-panel" aria-live="polite"><h2>داشبورد مدیریت</h2><p class="manager-intro">نمای کلی وضعیت کلاس و فهرست دانش‌آموزان</p><div class="demo-badge" style="border-color:#38784b;color:#9ee6ae">نمایش اطلاعات فعلی ثبت‌شده در سایت؛ این آمار از پایگاه داده زنده دریافت نمی‌شود.</div><div class="overview-grid" id="overview-grid"></div><h2>فهرست دانش‌آموزان</h2><div class="roster" id="student-roster"></div></section>
 
 </main>
-<footer>انضباط من · نسخه 1.5.14</footer>
+<footer>انضباط من · نسخه 1.5.15</footer>
 <script>
 
 const form=document.getElementById('lookup-form'),input=document.getElementById('national-code'),notice=document.getElementById('notice'),stats=document.getElementById('stats'),statsTitle=document.getElementById('stats-title');
@@ -287,33 +295,33 @@ const accounts={
   '1400550041':{name:'پرهام سیاسرنژاد',role:'دانش‌آموز'},
   'salam1234':{name:'سید علی شریعت پناهی',role:'دانش‌آموز'},
   '27269293':{name:'ابوالفضل صالح نژاد',role:'دانش‌آموز'},
-  'minecraft':{name:'Minecraft',role:'theme-command',theme:'minecraft'},
-  'dontcraft':{name:'غیرفعال‌سازی تم Minecraft',role:'theme-command',theme:'default'},
+  'roblox':{name:'Roblox',role:'theme-command',theme:'roblox'},
+  'dontroblox':{name:'غیرفعال‌سازی تم Roblox',role:'theme-command',theme:'default'},
   'admin1234':{name:'محمدمهدی',role:'مدیر'}
 };
 form.addEventListener('submit',function(event){
   event.preventDefault();
   const code=input.value.trim().replace(/[۰-۹]/g,d=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d))).replace(/[٠-٩]/g,d=>String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)));
   const account=accounts[code];
-  if(code==='minecraft'){
-    document.body.classList.add('minecraft-theme');
+  if(code==='roblox'){
+    document.body.classList.add('roblox-theme');
     stats.classList.remove('show');
     videosPanel.classList.remove('show');
     document.getElementById('manager-panel').classList.remove('show');
     loginCard.style.display='block';
     input.value='';
-    notice.textContent='تم Minecraft فعال شد! حالا کد اختصاصی خودت را وارد کن.';
+    notice.textContent='تم Roblox فعال شد! حالا کد اختصاصی خودت را وارد کن.';
     notice.classList.add('show');
     input.focus();
     return;
   }
-  if(code==='dontcraft'){
-    document.body.classList.remove('minecraft-theme');
+  if(code==='dontroblox'){
+    document.body.classList.remove('roblox-theme');
     stats.classList.remove('show');
     document.getElementById('manager-panel').classList.remove('show');
     loginCard.style.display='block';
     input.value='';
-    notice.textContent='تم Minecraft غیرفعال شد. حالا کد اختصاصی خودت را وارد کن.';
+    notice.textContent='تم Roblox غیرفعال شد. حالا کد اختصاصی خودت را وارد کن.';
     notice.classList.add('show');
     input.focus();
     return;
