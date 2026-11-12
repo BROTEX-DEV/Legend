@@ -127,6 +127,7 @@ let started=false,paused=false,muted=false,elapsed=0,last=0,audio=null,master=nu
 function audioStart(){try{audio=new (window.AudioContext||window.webkitAudioContext)();master=audio.createGain();master.gain.value=.14;master.connect(audio.destination);const osc=audio.createOscillator(),gain=audio.createGain();osc.type='sine';osc.frequency.value=48;gain.gain.value=.16;osc.connect(gain);gain.connect(master);osc.start();const noiseBuffer=audio.createBuffer(1,audio.sampleRate*2,audio.sampleRate),data=noiseBuffer.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*.12;const noise=audio.createBufferSource(),ng=audio.createGain();noise.buffer=noiseBuffer;noise.loop=true;ng.gain.value=.045;noise.connect(ng);ng.connect(master);noise.start();}catch(e){console.warn('Audio unavailable',e);}}
 function setMute(){muted=!muted;if(master)master.gain.setTargetAtTime(muted?0:.14,audio.currentTime,.08);$('mute').textContent=muted?'صدا: خاموش':'صدا: روشن';}
 $('mute').addEventListener('click',setMute);
+$('enter').addEventListener('click',start);
 function start(){if(!started){started=true;audioStart();$('loading').style.opacity='0';setTimeout(()=>$('loading')?.remove(),900);$('hud').classList.remove('hidden');}paused=false;$('play').textContent='توقف فیلم';last=performance.now();requestAnimationFrame(loop);}
 $('play').addEventListener('click',()=>{if(!started){start();return;}if(paused){start();}else{paused=true;$('play').textContent='ادامه فیلم';}});
 function smooth(t){return t*t*(3-2*t);}
